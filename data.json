@@ -1,0 +1,229 @@
+{
+  "meta": {
+    "title": "Aashan Javed \u2014 Portfolio",
+    "description": "Machine Learning & AI engineer focused on climate intelligence, geospatial modeling, and production ML systems.",
+    "canonical": "https://aashanjaved.com",
+    "accent": "#2563eb"
+  },
+  "person": {
+    "name": "Aashan Javed",
+    "tagline": "ML & AI engineer building and researching about intelligent and practical ML systems.",
+    "email": "aashanjaved567@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/aashan-javed/",
+    "github": "https://github.com/Aashan47",
+    "resumes": {
+      "europass": {
+        "name": "Europass Format",
+        "file": "resume/Resume.pdf",
+        "description": "Standard European CV format"
+      },
+      "standard": {
+        "name": "Standard Format", 
+        "file": "resume/Resume_updated.pdf",
+        "description": "Modern professional format"
+      }
+    },
+    "open_to": "Open to research-driven roles."
+  },
+  "research_interests": [
+    "Machine Learning",
+    "Generative AI",
+    "Geospatial Modeling",
+    "Climate Informatics",
+    "Diffusion Models",
+    "Large-Scale Forecasting Systems"
+  ],
+  "projects": [
+    {
+      "title": "AlphaEarth Climate Monitoring System",
+      "summary": "High-resolution (10 m) climate insights using geospatial pipelines. Integrated a foundation model to enable temperature prediction, similarity search, and change detection.",
+      "metric": "Anomaly detection accuracy +17% vs baseline",
+      "tags": [
+        "Python",
+        "Geospatial",
+        "Embeddings",
+        "Earth Engine"
+      ],
+      "linkLabel": "Code",
+      "link": "https://github.com/Aashan47/AlphaEarth-Climate-Monitor-",
+      "image": "assets/img/alpha-earth.png",
+      "alt": "AlphaEarth system"
+    },
+    {
+      "title": "Fraudulent Transaction Detection System",
+      "summary": "End-to-end ML pipeline (Scikit-learn, SMOTE, boosting) on imbalanced banking data with strong fraud detection performance.",
+      "metric": "F1 94%, false negatives -23%",
+      "tags": [
+        "Python",
+        "Scikit-learn",
+        "SMOTE",
+        "XGBoost"
+      ],
+      "linkLabel": "Code",
+      "link": "https://github.com/Aashan47/Fraudulent-Transaction-Detection-System",
+      "image": "assets/img/fraud.png",
+      "alt": "Fraud detection project"
+    },
+    {
+      "title": "Real-time Sign Language Communication System",
+      "summary": "ASL-to-text with >90% accuracy across 25+ gestures at sub-200 ms latency. Extended to simple sentence structuring.",
+      "metric": ">90% accuracy, <200 ms latency",
+      "tags": [
+        "OpenCV",
+        "TensorFlow",
+        "Realtime"
+      ],
+      "linkLabel": "Code",
+      "link": "https://github.com/Aashan47/Real-time-Sign-Language-Communication-System",
+      "image": "assets/img/Sign.png",
+      "alt": "Sign language system placeholder"
+    },
+    {
+      "title": "Legal Document Assistant",
+      "summary": "NLP tool for clause extraction, summarization, and legal Q&A using spaCy and Transformers. RAG added for contextual grounding.",
+      "metric": "Review time ~35% faster, accuracy +21%",
+      "tags": [
+        "spaCy",
+        "Transformers",
+        "RAG",
+        "Flask"
+      ],
+      "linkLabel": "Code",
+      "link": "https://github.com/Aashan47/Legal-Document-Assistant",
+      "image": "assets/img/legal.png",
+      "alt": "Legal doc assistant"
+    }
+  ],
+  "publications": [
+    {
+      "title": "Budget-Aware Fraud Detection with Label Delay: Stable Top-K Decisioning with Conformal Guarantees",
+      "year": 2025,
+      "summary": "Stabilizes Top-K alerts under label delay and drift using split-conformal guarantees.",
+      "status": "Preprint",
+      "link": "https://zenodo.org/records/17113194"
+    },
+    {
+      "title": "AlphaEarth Climate Monitoring System: High-Resolution Climate Monitoring with Foundation Models",
+      "year": 2025,
+      "summary": "10 m multi-modal climate monitoring using geospatial embeddings.",
+      "status": "Preprint",
+      "link": "https://zenodo.org/records/17113151"
+    },
+    {
+      "title": "Decoding Coarse Climate Variables to 10 m Using Geospatial Foundation Embeddings",
+      "year": 2025,
+      "summary": "Downscales ERA5/ERA5-Land anomalies to 10 m using lightweight decoders on embeddings.",
+      "status": "Preprint",
+      "link": "https://zenodo.org/records/17113210"
+    }
+  ],
+  "experience": [
+    {
+      "role": "Software Engineer (Machine Learning)",
+      "place": "FortyGuard",
+      "type": "Full-time",
+      "location": "Abu Dhabi",
+      "from": "Jan 2025",
+      "to": "Present",
+      "bullets": [
+        "Built a 2 m-above-ground large temperature model at 10 m resolution.",
+        "Cut median inference time ~35% vs baseline, improved prediction accuracy ~18%.",
+        "Shipped models into dashboards for non-technical users."
+      ]
+    },
+    {
+      "role": "Software Engineer (Machine Learning), Internship",
+      "place": "FortyGuard",
+      "type": "Internship",
+      "location": "Abu Dhabi",
+      "from": "May 2024",
+      "to": "Dec 2024",
+      "bullets": [
+        "Automated temperature data pipelines and tied frontend dashboards to ML APIs.",
+        "Improved analytics efficiency and response times with caching and query optimization."
+      ]
+    },
+    {
+      "role": "Machine Learning Engineer, Internship",
+      "place": "Payactiv SDS IT",
+      "type": "Internship",
+      "location": "Remote",
+      "from": "Jun 2023",
+      "to": "Sep 2023",
+      "bullets": [
+        "Built fraud anomaly detection that improved precision by ~22%.",
+        "Explored LLM-based risk scoring for internal analytics."
+      ]
+    }
+  ],
+  "skills": {
+    "Core ML": [
+      "Python",
+      "NumPy",
+      "Pandas",
+      "Scikit-learn",
+      "PyTorch",
+      "XGBoost"
+    ],
+    "Geospatial/Climate": [
+      "Google Earth Engine",
+      "Rasterio",
+      "GDAL",
+      "xarray",
+      "QGIS"
+    ],
+    "MLOps & Data": [
+      "Airflow",
+      "Docker",
+      "Kubernetes",
+      "FastAPI",
+      "Spark",
+      "Kafka",
+      "CI/CD"
+    ],
+    "Cloud": [
+      "AWS",
+      "Azure"
+    ],
+    "Databases": [
+      "SQL",
+      "NoSQL"
+    ],
+    "Languages": [
+      "English (IELTS 7.5)",
+      "Urdu",
+      "Punjabi",
+      "German (A2 in progress)"
+    ]
+  },
+  "achievements": [
+  "Campus Ambassador (Youth For Pakistan)",
+  "Head of Information (FAST Community Service)",
+  "Rector’s List of Honors",
+  "Digital Volunteer (Alkhidmat Foundation Pakistan)",
+  "Member (Google Cloud Community Pakistan)",
+  "Runner’s Up (ICC Cricket Hackathon, India)"
+],
+  "certifications": [
+    {
+      "name": "Machine Learning Specialization (Stanford Online)",
+      "link": "https://www.coursera.org/account/accomplishments/specialization/LFXZ8PXH4JGW?utm_source=link&utm_medium=certificate&utm_content=cert_image&utm_campaign=sharing_cta&utm_product=s1n"
+    },
+    {
+      "name": "IBM Data Science Specialization (IBM)",
+      "link": "https://www.coursera.org/account/accomplishments/specialization/8AS6VUNX6BFW"
+    },
+    {
+      "name": "Google Data Analytics (Google)",
+      "link": "https://www.coursera.org/account/accomplishments/specialization/certificate/VAB5L2ER92E5"
+    },
+    {
+      "name": "AWS Academy Graduate - AWS Academy Microservices and CI/CD Pipeline Builder",
+      "link": "https://www.credly.com/badges/7287dd67-7e90-42b3-a9be-ed33d2c82431/linked_in_profile"
+    },
+    {
+      "name": "Microsoft Azure Fundamentals (Microsoft)",
+      "link": "https://learn.microsoft.com/api/credentials/share/en-us/AashanJaved-7987/831A7403B7442E7A?sharingId=873776FDA2072D9E"
+    }
+  ]
+}

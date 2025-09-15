@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Aashan Javed — Portfolio</title>
+  <meta name="description" content="Machine Learning & AI engineer focused on climate intelligence, geospatial modeling, and production ML systems."/>
+  <link rel="canonical" href="https://your-domain.example"/>
+  <meta property="og:title" content="Aashan Javed — Portfolio"/>
+  <meta property="og:description" content="Climate intelligence, geospatial modeling, production ML."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://your-domain.example"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css"/>
+</head>
+<body>
+  <a class="skip-link" href="#home">Skip to content</a>
+  <header class="header">
+    <div class="container nav" role="navigation" aria-label="Primary">
+      <div class="brand" id="brand">
+        <img class="profile-photo" src="assets/img/Profile Photo.png" alt="Aashan Javed" />
+        <span>Aashan Javed</span>
+      </div>
+      <ul>
+        <li><a href="#home" data-section="home">Home</a></li>
+        <li><a href="#projects" data-section="projects">Projects</a></li>
+        <li><a href="#publications" data-section="publications">Publications</a></li>
+        <li><a href="#about" data-section="about">Research Interests</a></li>
+        <li><a href="#experience" data-section="experience">Experience</a></li>
+        <li><a href="#skills" data-section="skills">Skills</a></li>
+        <li><a href="#contact" data-section="contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main id="home" class="section">
+    <div class="container hero">
+      <div>
+        <div class="hero-intro">
+          <div class="hero-text">
+            <div class="kicker">Welcome</div>
+            <h1 class="name">Aashan Javed</h1>
+            <p class="tag lead">ML & AI engineer building intelligent and practical ML systems.</p>
+          </div>
+        </div>
+        <div class="hero-actions">
+          <a id="emailBtn" class="btn" href="#" role="button">
+            <img class="icon" src="assets/icons/email.svg" alt="" aria-hidden="true"/> Copy Email
+          </a>
+          <div class="resume-dropdown-container">
+            <a id="resumeBtn" class="btn primary" href="#" role="button">
+              <img class="icon" src="assets/icons/pdf.svg" alt="" aria-hidden="true"/> Download Resume (PDF)
+            </a>
+            <div id="resumeDropdown" class="resume-dropdown hidden">
+              <div class="resume-option" data-type="europass">
+                <strong>Europass Format</strong>
+                <span class="resume-desc">Standard European CV format</span>
+              </div>
+              <div class="resume-option" data-type="standard">
+                <strong>Standard Format</strong>
+                <span class="resume-desc">Modern professional format</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="socials">
+          <a id="socialLinkedin" class="icon-btn" aria-label="LinkedIn" target="_blank" rel="noopener">
+            <img class="icon" src="assets/icons/linkedin.svg" alt="" aria-hidden="true"/>
+          </a>
+          <a id="socialGithub" class="icon-btn" aria-label="GitHub" target="_blank" rel="noopener">
+            <img class="icon" src="assets/icons/github.svg" alt="" aria-hidden="true"/>
+          </a>
+        </div>
+      </div>
+      <div>
+        <article class="card">
+          <h3>What I do</h3>
+          <p>I design models and pipelines that move from notebooks into products. I like neat APIs, clean data, and UX that respects the user.</p>
+          <p class="muted">Friendly, professional, and thoughtful about performance.</p>
+        </article>
+      </div>
+    </div>
+  </main>
+
+  <section id="projects" class="section">
+    <div class="container">
+      <header><h2>Projects</h2><p class="lead">Work that ships, with measurable outcomes.</p></header>
+      <div class="grid"></div>
+    </div>
+  </section>
+
+  <section id="publications" class="section">
+    <div class="container">
+      <header><h2>Publications</h2><p class="lead">Preprints and research contributions.</p></header>
+      <ul id="pubList"></ul>
+    </div>
+  </section>
+
+  <section id="about" class="section">
+    <div class="container">
+      <header><h2>Research Interests</h2></header>
+      <p>Machine Learning, Generative AI, Geospatial Modeling, Climate Informatics, Diffusion Models, Large-Scale Forecasting Systems</p>
+    </div>
+  </section>
+
+  <section id="experience" class="section">
+    <div class="container">
+      <header><h2>Experience</h2></header>
+      <div class="timeline" id="timeline" aria-label="Career timeline"></div>
+    </div>
+  </section>
+
+  <section id="skills" class="section">
+    <div class="container">
+      <header><h2>Skills</h2></header>
+      <div id="skillGrid" class="skill-grid"></div>
+      <div class="mt-16">
+        <h3>Achievements</h3>
+        <div class="chips" id="achievements"></div>
+      </div>
+      <div class="mt-16">
+        <h3>Certifications</h3>
+        <div class="chips" id="certifications"></div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="contact" class="section">
+    <div class="container center">
+      <div>
+        <h2>Contact</h2>
+        <p>Best way to reach me is email.</p>
+        <p><a id="footerEmail" href="mailto:aashanjaved567@gmail.com"><span>aashanjaved567@gmail.com</span></a></p>
+        <p class="mt-12">
+          <a id="footerLinkedin" class="btn" target="_blank" rel="noopener"><img class="icon" src="assets/icons/linkedin.svg" alt="" aria-hidden="true"/> LinkedIn</a>
+          <a id="footerGithub" class="btn" target="_blank" rel="noopener"><img class="icon" src="assets/icons/github.svg" alt="" aria-hidden="true"/> GitHub</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container muted">
+      <small>&copy; <span id="year"></span> <span id="brandFoot">Aashan Javed</span></small>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js" defer></script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+    document.getElementById("brandFoot").textContent = "Aashan Javed";
+    // hydrate achievements and certifications from data.json after main.js loads
+    fetch("data.json").then(r=>r.json()).then(d=>{
+      const ach = document.getElementById("achievements");
+      d.achievements.forEach(a=>{
+        const el = document.createElement("span");
+        el.className = "chip";
+        el.textContent = a;
+        ach.appendChild(el);
+      });
+      
+      // Handle certifications as chips with links
+      const cert = document.getElementById("certifications");
+      d.certifications.forEach(c=>{
+        const el = document.createElement("a");
+        el.className = "chip";
+        el.textContent = c.name;
+        el.href = c.link;
+        el.target = "_blank";
+        el.rel = "noopener";
+        cert.appendChild(el);
+      });
+      
+      // set accent color from data
+      const accent = d?.meta?.accent;
+      if(accent){
+        document.documentElement.style.setProperty("--accent", accent);
+      }
+    });
+  </script>
+</body>
+</html>
