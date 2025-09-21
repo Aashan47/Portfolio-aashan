@@ -100,21 +100,21 @@
       "year": 2025,
       "summary": "Stabilizes Top-K alerts under label delay and drift using split-conformal guarantees.",
       "status": "Preprint",
-      "link": "https://zenodo.org/records/17113194"
+      "link": "https://zenodo.org/records/17170373"
     },
     {
       "title": "AlphaEarth Climate Monitoring System: High-Resolution Climate Monitoring with Foundation Models",
       "year": 2025,
       "summary": "10 m multi-modal climate monitoring using geospatial embeddings.",
       "status": "Preprint",
-      "link": "https://zenodo.org/records/17113151"
+      "link": "https://zenodo.org/records/17171331"
     },
     {
       "title": "Decoding Coarse Climate Variables to 10 m Using Geospatial Foundation Embeddings",
       "year": 2025,
       "summary": "Downscales ERA5/ERA5-Land anomalies to 10 m using lightweight decoders on embeddings.",
       "status": "Preprint",
-      "link": "https://zenodo.org/records/17113210"
+      "link": "https://zenodo.org/records/17171318"
     }
   ],
   "experience": [
