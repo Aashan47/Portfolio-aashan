@@ -8,7 +8,7 @@
   "person": {
     "name": "Aashan Javed",
     "tagline": "ML & AI engineer building and researching about intelligent and practical ML systems.",
-    "email": "aashanjaved567@gmail.com",
+    "email": "aashanjaved.cs@gmail.com",
     "linkedin": "https://www.linkedin.com/in/aashan-javed/",
     "github": "https://github.com/Aashan47",
     "resumes": {
@@ -34,6 +34,21 @@
     "Large-Scale Forecasting Systems"
   ],
   "projects": [
+    {
+      "title": "Revisitation Aware Video Segmentation",
+      "summary": "Built PSPNet segmentation with motion tracking and revisit detection to fix static scene and loop overcounting in urban videos.",
+      "metric": "mIoU +1.9, MOTA +15.3, ID switches −52%, static overcount −50%",
+      "tags": [
+        "Python",
+        "PSPNet",
+        "Computer Vision",
+        "Cityscapes"
+      ],
+      "linkLabel": "Code",
+      "link": "https://github.com/Aashan47/Video-Segmentation/tree/main",
+      "image": "assets/img/video-seg.png",
+      "alt": "Video segmentation system"
+    },
     {
       "title": "AlphaEarth Climate Monitoring System",
       "summary": "High-resolution (10 m) climate insights using geospatial pipelines. Integrated a foundation model to enable temperature prediction, similarity search, and change detection.",
