@@ -132,9 +132,27 @@ function renderHero(data){
 function renderProjects(data){
   const container = document.querySelector("#projects .grid");
   data.projects.forEach(p => {
+    // Handle both old format (single link) and new format (multiple links)
+    let linksHtml = '';
+    if (p.links && Array.isArray(p.links)) {
+      // New format with multiple links
+      linksHtml = p.links.map((link, index) => 
+        `<a href="${safe(link.url)}" class="btn ${index > 0 ? 'btn-secondary' : ''}" target="_blank" rel="noopener">
+          <img class="icon" src="assets/icons/external.svg" alt="" aria-hidden="true"/> ${safe(link.label)}
+        </a>`
+      ).join(' ');
+    } else if (p.link) {
+      // Old format with single link
+      linksHtml = `<a href="${safe(p.link)}" class="btn" target="_blank" rel="noopener">
+        <img class="icon" src="assets/icons/external.svg" alt="" aria-hidden="true"/> ${safe(p.linkLabel || "Open")}
+      </a>`;
+    }
+
+    const primaryLink = p.links ? p.links[0]?.url : p.link;
+    
     const card = el(`
       <article class="card col-6 col-4" tabindex="0">
-        <a class="thumb" href="${safe(p.link)}" target="_blank" rel="noopener">
+        <a class="thumb" href="${safe(primaryLink)}" target="_blank" rel="noopener">
           <img src="${safe(p.image)}" loading="lazy" alt="${safe(p.alt)}"/>
         </a>
         <h3>${safe(p.title)}</h3>
@@ -143,9 +161,7 @@ function renderProjects(data){
         <div class="chips">
           ${p.tags.map(t => `<span class="chip">${safe(t)}</span>`).join("")}
         </div>
-        <p class="mt-12"><a href="${safe(p.link)}" class="btn" target="_blank" rel="noopener">
-          <img class="icon" src="assets/icons/external.svg" alt="" aria-hidden="true"/> ${safe(p.linkLabel || "Open")}
-        </a></p>
+        <p class="mt-12">${linksHtml}</p>
       </article>
     `);
     container.appendChild(card);
@@ -155,12 +171,16 @@ function renderProjects(data){
 function renderPublications(data){
   const list = document.querySelector("#pubList");
   data.publications.forEach(pub => {
+    const linksHtml = pub.links ? pub.links.map(link => 
+      `<a href="${safe(link.url)}" target="_blank" rel="noopener">${safe(link.label)}</a>`
+    ).join(' · ') : '';
+    
     const li = el(`
       <li>
         <strong>${safe(pub.title)}</strong> <span class="muted">(${safe(pub.year)})</span>
         <span class="chip" aria-label="${safe(pub.status)}">${safe(pub.status)}</span><br/>
         <span class="muted">${safe(pub.summary)}</span>
-        <span> · <a href="${safe(pub.link)}" target="_blank" rel="noopener">Zenodo</a></span>
+        ${linksHtml ? `<span> · ${linksHtml}</span>` : ''}
       </li>
     `);
     list.appendChild(li);
