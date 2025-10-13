@@ -220,7 +220,7 @@ function renderSkills(data){
 
 function renderAbout(data){
   const aboutP = document.querySelector("#about p");
-  aboutP.innerHTML = `My work centers on advancing methods at the intersection of machine learning and climate science. I am particularly interested in <strong>Machine Learning, Generative AI, Geospatial Modeling, Climate Informatics, Diffusion Models, and Large-Scale Forecasting Systems.</strong>`;
+  aboutP.innerHTML = `I research and develop AI systems that drive meaningful change in critical areas like climate science, autonomous systems, and financial security. My work focuses on bridging the gap between cutting-edge research and real-world impact, from creating 10-meter resolution climate monitoring systems that help track environmental changes, to developing fraud detection frameworks that protect vulnerable populations from financial harm. I'm passionate about <strong>climate informatics, computer vision, and geospatial AI</strong> research that doesn't just advance the field, but actively contributes to solving some of our most pressing global challenges.`;
 }
 
 function renderFooter(data){
