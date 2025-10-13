@@ -137,7 +137,7 @@ function renderProjects(data){
     if (p.links && Array.isArray(p.links)) {
       // New format with multiple links
       linksHtml = p.links.map((link, index) => 
-        `<a href="${safe(link.url)}" class="btn ${index > 0 ? 'btn-secondary' : ''}" target="_blank" rel="noopener">
+        `<a href="${safe(link.url)}" class="btn ${index > 0 ? 'btn-secondary ml-8' : ''}" target="_blank" rel="noopener">
           <img class="icon" src="assets/icons/external.svg" alt="" aria-hidden="true"/> ${safe(link.label)}
         </a>`
       ).join(' ');
@@ -220,7 +220,7 @@ function renderSkills(data){
 
 function renderAbout(data){
   const aboutP = document.querySelector("#about p");
-  aboutP.innerHTML = `I research and develop AI systems that drive meaningful change in critical areas like climate science, autonomous systems, and financial security. My work focuses on bridging the gap between cutting-edge research and real-world impact, from creating 10-meter resolution climate monitoring systems that help track environmental changes, to developing fraud detection frameworks that protect vulnerable populations from financial harm. I'm passionate about <strong>climate informatics, computer vision, and geospatial AI</strong> research that doesn't just advance the field, but actively contributes to solving some of our most pressing global challenges.`;
+  aboutP.innerHTML = `My research focuses on advancing <strong>AI for sustainability and climate science</strong>, with particular emphasis on high-resolution climate monitoring, geospatial foundation models, and computer vision applications for environmental understanding. I explore how machine learning can address critical climate challenges through innovative approaches in <strong>climate informatics, geospatial modeling, and diffusion models</strong> for large-scale environmental forecasting. My work investigates novel methods for downscaling climate data, detecting environmental changes, and creating intelligent systems that contribute to our understanding of Earth's changing climate patterns.`;
 }
 
 function renderFooter(data){
