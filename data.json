@@ -100,7 +100,7 @@
       "alt": "Fraud detection project"
     },
     {
-      "title": "Real-time Sign Language Communication System",
+      "title": "EquiSpeak: Real-time Sign Language Communication System",
       "summary": "ASL-to-text with >90% accuracy across 25+ gestures at sub-200 ms latency. Extended to simple sentence structuring.",
       "metric": ">90% accuracy, <200 ms latency",
       "tags": [
@@ -108,10 +108,18 @@
         "TensorFlow",
         "Realtime"
       ],
-      "linkLabel": "Code",
-      "link": "https://github.com/Aashan47/Real-time-Sign-Language-Communication-System",
-      "image": "assets/img/Sign.png",
-      "alt": "Sign language system placeholder"
+      "links": [
+        {
+          "label": "Code",
+          "url": "https://github.com/Aashan47/Real-time-Sign-Language-Communication-System"
+        },
+        {
+          "label": "Demo",
+          "url": "https://drive.google.com/file/d/1MRwsnLi9eDq7DJlbpXgu5mSgO4V7sbtQ/view"
+        }
+      ],
+      "image": "assets/img/EquiSpeak-logo.jpg",
+      "alt": "EquiSpeak sign language system"
     },
     {
       "title": "Legal Document Assistant",
