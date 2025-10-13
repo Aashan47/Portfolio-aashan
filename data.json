@@ -44,8 +44,20 @@
         "Computer Vision",
         "Cityscapes"
       ],
-      "linkLabel": "Code",
-      "link": "https://github.com/Aashan47/Video-Segmentation/tree/main",
+      "links": [
+        {
+          "label": "Code",
+          "url": "https://github.com/Aashan47/Video-Segmentation/tree/main"
+        },
+        {
+          "label": "Basic Segmentation Demo",
+          "url": "https://www.youtube.com/watch?v=HwiyFk_XMjw"
+        },
+        {
+          "label": "Scene Detection Demo",
+          "url": "https://www.youtube.com/shorts/m0hQ2HnS5pw"
+        }
+      ],
       "image": "assets/img/video-seg.png",
       "alt": "Video segmentation system"
     },
@@ -59,8 +71,16 @@
         "Embeddings",
         "Earth Engine"
       ],
-      "linkLabel": "Code",
-      "link": "https://github.com/Aashan47/AlphaEarth-Climate-Monitor-",
+      "links": [
+        {
+          "label": "Code",
+          "url": "https://github.com/Aashan47/Alpha-Earth---Climate-Monitoring-System"
+        },
+        {
+          "label": "Demo",
+          "url": "https://www.youtube.com/watch?v=Glg3FgF3DnM"
+        }
+      ],
       "image": "assets/img/alpha-earth.png",
       "alt": "AlphaEarth system"
     },
@@ -115,32 +135,64 @@
       "year": 2025,
       "summary": "Stabilizes Top-K alerts under label delay and drift using split-conformal guarantees.",
       "status": "Preprint",
-      "link": "https://zenodo.org/records/17170373",
-      "github": "https://github.com/Aashan47/Budget-Aware-Fraud-Detection-with-Label-Delay"
+      "links": [
+        {
+          "label": "Paper",
+          "url": "https://zenodo.org/records/17170373"
+        },
+        {
+          "label": "Code",
+          "url": "https://github.com/Aashan47/Budget-Aware-Fraud-Detection-with-Label-Delay"
+        }
+      ]
     },
     {
       "title": "AlphaEarth Climate Monitoring System: High-Resolution Climate Monitoring with Foundation Models",
       "year": 2025,
       "summary": "10 m multi-modal climate monitoring using geospatial embeddings.",
       "status": "Preprint",
-      "link": "https://zenodo.org/records/17171331",
-      "github": "https://github.com/Aashan47/AlphaEarth-Climate-Monitor-"
+      "links": [
+        {
+          "label": "Paper",
+          "url": "https://zenodo.org/records/17171331"
+        },
+        {
+          "label": "Code",
+          "url": "https://github.com/Aashan47/Alpha-Earth---Climate-Monitoring-System"
+        }
+      ]
     },
     {
       "title": "Decoding Coarse Climate Variables to 10 m Using Geospatial Foundation Embeddings",
       "year": 2025,
       "summary": "Downscales ERA5/ERA5-Land anomalies to 10 m using lightweight decoders on embeddings.",
       "status": "Preprint",
-      "link": "https://zenodo.org/records/17171318",
-      "github": "https://github.com/Aashan47/Decode-coarse-climate-anomalies"
+      "links": [
+        {
+          "label": "Paper",
+          "url": "https://zenodo.org/records/17171318"
+        },
+        {
+          "label": "Code",
+          "url": "https://github.com/Aashan47/Decode-coarse-climate-anomalies"
+        }
+      ]
     },
     {
       "title": "Preventing Static Element Double Counting in Urban Video Segmentation for Autonomous Driving",
       "year": 2025,
       "summary": "Revisitation-aware framework that prevents static surfaces from being counted multiple times when routes loop or cars revisit views. Uses temporally smoothed per-pixel labels, pixel-level instance tracking, and a semantics-driven revisitation detector to improve route-level composition accuracy.",
       "status": "Preprint",
-      "link": "https://doi.org/10.5281/zenodo.17218433",
-      "github": "https://github.com/Aashan47/Video-Segmentation"
+      "links": [
+        {
+          "label": "Paper",
+          "url": "https://doi.org/10.5281/zenodo.17218433"
+        },
+        {
+          "label": "Code",
+          "url": "https://github.com/Aashan47/Video-Segmentation"
+        }
+      ]
     }
   ],
   "experience": [
