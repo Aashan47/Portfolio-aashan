@@ -282,34 +282,41 @@
       "German (A2 in progress)"
     ]
   },
-  "achievements": [
-  "Campus Ambassador (Youth For Pakistan)",
-  "Head of Information (FAST Community Service)",
-  "Rector’s List of Honors",
-  "Digital Volunteer (Alkhidmat Foundation Pakistan)",
-  "Member (Google Cloud Community Pakistan)",
-  "Runner’s Up (ICC Cricket Hackathon, India)"
-],
-  "certifications": [
-    {
-      "name": "Machine Learning Specialization (Stanford Online)",
-      "link": "https://www.coursera.org/account/accomplishments/specialization/LFXZ8PXH4JGW?utm_source=link&utm_medium=certificate&utm_content=cert_image&utm_campaign=sharing_cta&utm_product=s1n"
-    },
-    {
-      "name": "IBM Data Science Specialization (IBM)",
-      "link": "https://www.coursera.org/account/accomplishments/specialization/8AS6VUNX6BFW"
-    },
-    {
-      "name": "Google Data Analytics (Google)",
-      "link": "https://www.coursera.org/account/accomplishments/specialization/certificate/VAB5L2ER92E5"
-    },
-    {
-      "name": "AWS Academy Graduate - AWS Academy Microservices and CI/CD Pipeline Builder",
-      "link": "https://www.credly.com/badges/7287dd67-7e90-42b3-a9be-ed33d2c82431/linked_in_profile"
-    },
-    {
-      "name": "Microsoft Azure Fundamentals (Microsoft)",
-      "link": "https://learn.microsoft.com/api/credentials/share/en-us/AashanJaved-7987/831A7403B7442E7A?sharingId=873776FDA2072D9E"
-    }
-  ]
+  "achievements": {
+    "verificationLink": "https://drive.google.com/drive/folders/1F93E9KE2YUgVkwdzY66PRBVakFLy7rVp?usp=drive_link",
+    "items": [
+      "Recipient - Rector's List of Honor",
+      "Recipient - Gold Medal for Outstanding Performance and 4.0 GPA in 7th Semester",
+      "Digital Volunteer - Alkhidmat Foundation Pakistan for Flood Relief Services in 2022 floods in Pakistan",
+      "Runner-up - ICC Hackathon (International Finalist, Cricket Analytics)",
+      "Campus Ambassador - Youth for Pakistan",
+      "Head of Information - FAST NUCES Community Service Society",
+      "Google Cloud Community Member - Workshops and Cloud Events"
+    ]
+  },
+  "certifications": {
+    "verificationLink": "https://drive.google.com/drive/folders/1l3_D9sudvOBeAlmY4pgb79kmQ7D0Q7be?usp=drive_link",
+    "items": [
+      {
+        "name": "Machine Learning Specialization (Stanford Online)",
+        "link": "https://www.coursera.org/account/accomplishments/specialization/LFXZ8PXH4JGW?utm_source=link&utm_medium=certificate&utm_content=cert_image&utm_campaign=sharing_cta&utm_product=s1n"
+      },
+      {
+        "name": "IBM Data Science Specialization (IBM)",
+        "link": "https://www.coursera.org/account/accomplishments/specialization/8AS6VUNX6BFW"
+      },
+      {
+        "name": "Google Data Analytics (Google)",
+        "link": "https://www.coursera.org/account/accomplishments/specialization/certificate/VAB5L2ER92E5"
+      },
+      {
+        "name": "AWS Academy Graduate - AWS Academy Microservices and CI/CD Pipeline Builder",
+        "link": "https://www.credly.com/badges/7287dd67-7e90-42b3-a9be-ed33d2c82431/linked_in_profile"
+      },
+      {
+        "name": "Microsoft Azure Fundamentals (Microsoft)",
+        "link": "https://learn.microsoft.com/api/credentials/share/en-us/AashanJaved-7987/831A7403B7442E7A?sharingId=873776FDA2072D9E"
+      }
+    ]
+  }
 }
