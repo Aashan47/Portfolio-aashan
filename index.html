@@ -159,16 +159,29 @@
     // hydrate achievements and certifications from data.json after main.js loads
     fetch("data.json").then(r=>r.json()).then(d=>{
       const ach = document.getElementById("achievements");
-      d.achievements.forEach(a=>{
+      d.achievements.items.forEach(a=>{
         const el = document.createElement("span");
         el.className = "chip";
         el.textContent = a;
         ach.appendChild(el);
       });
       
+      // Add verification link for achievements
+      if(d.achievements.verificationLink) {
+        const verifyLink = document.createElement("a");
+        verifyLink.className = "chip";
+        verifyLink.textContent = "See All Achievements";
+        verifyLink.href = d.achievements.verificationLink;
+        verifyLink.target = "_blank";
+        verifyLink.rel = "noopener";
+        verifyLink.style.background = "var(--accent)";
+        verifyLink.style.color = "white";
+        ach.appendChild(verifyLink);
+      }
+      
       // Handle certifications as chips with links
       const cert = document.getElementById("certifications");
-      d.certifications.forEach(c=>{
+      d.certifications.items.forEach(c=>{
         const el = document.createElement("a");
         el.className = "chip";
         el.textContent = c.name;
@@ -177,6 +190,19 @@
         el.rel = "noopener";
         cert.appendChild(el);
       });
+      
+      // Add verification link for certifications
+      if(d.certifications.verificationLink) {
+        const verifyLink = document.createElement("a");
+        verifyLink.className = "chip";
+        verifyLink.textContent = "See All Certificates";
+        verifyLink.href = d.certifications.verificationLink;
+        verifyLink.target = "_blank";
+        verifyLink.rel = "noopener";
+        verifyLink.style.background = "var(--accent)";
+        verifyLink.style.color = "white";
+        cert.appendChild(verifyLink);
+      }
       
       // set accent color from data
       const accent = d?.meta?.accent;
