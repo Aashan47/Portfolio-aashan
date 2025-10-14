@@ -1,7 +1,7 @@
 
 const STATE = {
   data: null,
-  sections: ["home","projects","publications","experience","skills","about","contact"]
+  sections: ["home","projects","publications","about","experience","skills","achievements","certifications","contact"]
 };
 
 async function init(){
