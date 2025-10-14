@@ -122,7 +122,7 @@
       "alt": "EquiSpeak sign language system"
     },
     {
-      "title": "Legal Document Assistant",
+      "title": "Wakeel: Smart Legal Paralegal & AI Assistant",
       "summary": "NLP tool for clause extraction, summarization, and legal Q&A using spaCy and Transformers. RAG added for contextual grounding.",
       "metric": "Review time ~35% faster, accuracy +21%",
       "tags": [
@@ -131,10 +131,18 @@
         "RAG",
         "Flask"
       ],
-      "linkLabel": "Code",
-      "link": "https://github.com/Aashan47/Legal-Document-Assistant",
-      "image": "assets/img/legal.png",
-      "alt": "Legal doc assistant"
+      "links": [
+        {
+          "label": "Code",
+          "url": "https://github.com/Aashan47/Wakeel-Smart-Legal-Paralegal-AI-Assistant"
+        },
+        {
+          "label": "Demo",
+          "url": "https://youtu.be/JrrLWc9jvmY"
+        }
+      ],
+      "image": "assets/img/wakeel.jpg",
+      "alt": "Wakeel smart legal paralegal AI assistant interface"
     }
   ],
   "publications": [
