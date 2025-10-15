@@ -313,55 +313,54 @@ a:hover::after{transform:scaleX(1)}
 
 /* Achievements specific styling for better spacing */
 /* container of badges */
-#achievements.chips {
+
+/* Center Achievements and Certifications sections */
+#achievements.chips, #certifications.chips {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;         /* handles spacing */
-  margin-top: 12px; /* keep */
-}
-
-/* each badge */
-#achievements .chip {
-  display: inline-flex;          /* keeps pill as one unit */
+  gap: 12px;
+  margin-top: 12px;
+  justify-content: center;
   align-items: center;
-  white-space: nowrap;           /* no breaks inside the pill */
-  word-break: keep-all;          /* avoid splitting on hyphens etc. */
+}
+
+#achievements .chip, #certifications .chip {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  word-break: keep-all;
   overflow-wrap: normal;
-  margin: 0;                     /* remove extra margin, gap covers it */
+  margin: 0;
+  font-size: 13px;
+  min-height: 32px;
+  padding: 8px 16px;
 }
 
-/* Achievements - static styling (no hover effects) */
 #achievements .chip {
-  cursor: default;               /* normal cursor, not pointer */
-  transition: none;              /* no hover transitions */
-}
-
-/* Certifications styling - same as achievements but for links */
-#certifications.chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;         /* handles spacing */
-  margin-top: 12px; /* keep */
+  cursor: default;
+  transition: none;
 }
 
 #certifications .chip {
-  display: inline-flex;          /* keeps pill as one unit */
-  align-items: center;
-  white-space: nowrap;           /* no breaks inside the pill */
-  word-break: keep-all;          /* avoid splitting on hyphens etc. */
-  overflow-wrap: normal;
-  margin: 0;                     /* remove extra margin, gap covers it */
-  text-decoration: none;         /* remove underline from links */
+  text-decoration: none;
 }
 
-#certifications .chip::after{
-  content: none;                 /* remove link underline animation */
+#certifications .chip::after {
+  content: none;
 }
 
-#certifications .chip:hover{
+#certifications .chip:hover {
   background: var(--accent);
   color: white;
   transform: translateY(-1px);
+}
+
+/* Section headers center */
+#achievements ~ header, #certifications ~ header {
+  text-align: center;
+}
+.section header {
+  text-align: center;
 }
 
 .card .thumb{ width:100%; height:180px; border-radius:12px; background:#e5e7eb; display:block; overflow:hidden; margin:10px 0 }
