@@ -85,6 +85,35 @@
       "alt": "AlphaEarth system"
     },
     {
+      "title": "Urban Data Center Site and Risk Assessment Platform",
+      "summary": "Comprehensive web application for evaluating optimal data center locations using NASA Earth Observation data, urban demographics, and infrastructure analysis. Features interactive mapping, multi-factor risk assessment, automated scoring, and professional reporting capabilities.",
+      "metric": "Multi-site comparison with real-time environmental analysis",
+      "tags": [
+        "React",
+        "Material-UI",
+        "Python",
+        "Flask",
+        "NASA APIs",
+        "OpenStreetMap"
+      ],
+      "links": [
+        {
+          "label": "Code",
+          "url": "https://github.com/Aashan47/Urban-Data-Center-Site-and-Risk-Assessment"
+        },
+        {
+          "label": "Quick Demo (2 min)",
+          "url": "https://youtu.be/Hd5zVOhxH78"
+        },
+        {
+          "label": "Full Demo (5 min)",
+          "url": "https://youtu.be/GxkEzKhGeb0"
+        }
+      ],
+      "image": "assets/img/Thumbnail-Urban-Data-Center.jpg",
+      "alt": "Urban Data Center Assessment Platform"
+    },
+    {
       "title": "Fraudulent Transaction Detection System",
       "summary": "End-to-end ML pipeline (Scikit-learn, SMOTE, boosting) on imbalanced banking data with strong fraud detection performance.",
       "metric": "F1 94%, false negatives -23%",
