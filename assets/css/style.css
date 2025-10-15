@@ -170,16 +170,17 @@ a:hover::after{transform:scaleX(1)}
   transform: scale(1.05);
   box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
 }
-.nav ul{ display:flex; gap:8px; list-style:none; margin:0; padding:0; flex-wrap: wrap }
+.nav ul{ display:flex; gap:4px; list-style:none; margin:0; padding:0; flex-wrap: nowrap }
 .nav a{
-  padding:8px 12px; 
-  border-radius:10px; 
+  padding:6px 10px; 
+  border-radius:8px; 
   color:var(--muted);
   transition: all 200ms ease;
   position: relative;
   font-weight: 500;
   white-space: nowrap;
-  font-size: 15px;
+  font-size: 14px;
+  line-height: 1.4;
 }
 .nav a:hover{
   color:var(--text);
@@ -311,22 +312,6 @@ a:hover::after{transform:scaleX(1)}
   border:1px solid color-mix(in oklab, var(--accent) 30%, transparent);
   transition: all 150ms ease;
 }
-/* Remove general chip hover - will add specific hover for certifications only */
-
-/* Certification links styling */
-.certification-grid .chip {
-  text-decoration: none;
-}
-
-.certification-grid .chip::after {
-  content: none;
-}
-
-.certification-grid .chip:hover {
-  background: var(--accent);
-  color: white;
-  transform: translateY(-1px);
-}
 
 /* Section headers center */
 .section header {
@@ -381,16 +366,63 @@ a:hover::after{transform:scaleX(1)}
 .skill-group h4{ margin:0 0 8px 0; color: var(--accent); }
 .skill-group .chips{ display:flex; flex-wrap:wrap; gap:8px }
 
-/* Achievements and Certifications - Same styling as Skills */
+/* Achievements and Certifications - Enhanced styling */
 .achievement-grid, .certification-grid { 
   display:grid; 
-  grid-template-columns:repeat(2,1fr); 
-  gap:12px 
+  grid-template-columns:repeat(1,1fr); 
+  gap:16px;
+  max-width: 900px;
+  margin: 0 auto;
 }
-@media (min-width:700px){ 
+@media (min-width:600px){ 
+  .achievement-grid, .certification-grid { 
+    grid-template-columns:repeat(2,1fr) 
+  } 
+}
+@media (min-width:900px){ 
   .achievement-grid, .certification-grid { 
     grid-template-columns:repeat(3,1fr) 
   } 
+}
+
+/* Enhanced skill-group for achievements/certifications */
+.achievement-grid .skill-group,
+.certification-grid .skill-group {
+  min-height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.achievement-grid .skill-group .chips,
+.certification-grid .skill-group .chips {
+  justify-content: center;
+  width: 100%;
+}
+
+.achievement-grid .chip,
+.certification-grid .chip {
+  font-size: 13px;
+  padding: 8px 14px;
+  font-weight: 500;
+}
+
+/* Certification links styling */
+.certification-grid .chip {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.certification-grid .chip::after {
+  content: none;
+}
+
+.certification-grid .chip:hover {
+  background: var(--accent);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
 }
 
 /* Footer */
