@@ -315,7 +315,7 @@ a:hover::after{transform:scaleX(1)}
 /* container of badges */
 
 /* Center Achievements and Certifications sections */
-#achievements.chips, #certifications.chips {
+#achievementsList, #certificationsList {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
@@ -324,7 +324,7 @@ a:hover::after{transform:scaleX(1)}
   align-items: center;
 }
 
-#achievements .chip, #certifications .chip {
+#achievementsList .chip, #certificationsList .chip {
   display: inline-flex;
   align-items: center;
   white-space: nowrap;
@@ -336,29 +336,26 @@ a:hover::after{transform:scaleX(1)}
   padding: 8px 16px;
 }
 
-#achievements .chip {
+#achievementsList .chip {
   cursor: default;
   transition: none;
 }
 
-#certifications .chip {
+#certificationsList .chip {
   text-decoration: none;
 }
 
-#certifications .chip::after {
+#certificationsList .chip::after {
   content: none;
 }
 
-#certifications .chip:hover {
+#certificationsList .chip:hover {
   background: var(--accent);
   color: white;
   transform: translateY(-1px);
 }
 
 /* Section headers center */
-#achievements ~ header, #certifications ~ header {
-  text-align: center;
-}
 .section header {
   text-align: center;
 }
