@@ -128,14 +128,14 @@
   <section id="achievements" class="section">
     <div class="container">
       <header><h2>Achievements</h2></header>
-      <div id="achievementsList" class="chips"></div>
+      <div class="achievement-grid"></div>
     </div>
   </section>
 
   <section id="certifications" class="section">
     <div class="container">
       <header><h2>Certifications</h2></header>
-      <div id="certificationsList" class="chips"></div>
+      <div class="certification-grid"></div>
     </div>
   </section>
 
@@ -166,50 +166,62 @@
     document.getElementById("brandFoot").textContent = "Aashan Javed";
     // hydrate achievements and certifications from data.json after main.js loads
     fetch("data.json").then(r=>r.json()).then(d=>{
-      const ach = document.getElementById("achievementsList");
+      // Achievements grid - Skills-like layout
+      const achGrid = document.querySelector(".achievement-grid");
+      
+      // Create individual achievement cards
       d.achievements.items.forEach(a=>{
-        const el = document.createElement("span");
-        el.className = "chip";
-        el.textContent = a;
-        ach.appendChild(el);
+        const card = document.createElement("div");
+        card.className = "skill-group";
+        card.innerHTML = `
+          <div class="chips">
+            <span class="chip">${a}</span>
+          </div>
+        `;
+        achGrid.appendChild(card);
       });
       
-      // Add verification link for achievements
+      // Add verification link card for achievements
       if(d.achievements.verificationLink) {
-        const verifyLink = document.createElement("a");
-        verifyLink.className = "chip";
-        verifyLink.textContent = "📋 Verify Achievements";
-        verifyLink.href = d.achievements.verificationLink;
-        verifyLink.target = "_blank";
-        verifyLink.rel = "noopener";
-        verifyLink.style.background = "var(--accent)";
-        verifyLink.style.color = "white";
-        ach.appendChild(verifyLink);
+        const verifyCard = document.createElement("div");
+        verifyCard.className = "skill-group";
+        verifyCard.innerHTML = `
+          <div class="chips">
+            <a href="${d.achievements.verificationLink}" target="_blank" rel="noopener" class="chip" style="background: var(--accent); color: white;">
+              📋 Verify All Achievements
+            </a>
+          </div>
+        `;
+        achGrid.appendChild(verifyCard);
       }
       
-      // Handle certifications as chips with links
-      const cert = document.getElementById("certificationsList");
+      // Certifications grid - Skills-like layout
+      const certGrid = document.querySelector(".certification-grid");
+      
+      // Create individual certification cards
       d.certifications.items.forEach(c=>{
-        const el = document.createElement("a");
-        el.className = "chip";
-        el.textContent = c.name;
-        el.href = c.link;
-        el.target = "_blank";
-        el.rel = "noopener";
-        cert.appendChild(el);
+        const card = document.createElement("div");
+        card.className = "skill-group";
+        card.innerHTML = `
+          <div class="chips">
+            <a href="${c.link}" target="_blank" rel="noopener" class="chip">${c.name}</a>
+          </div>
+        `;
+        certGrid.appendChild(card);
       });
       
-      // Add verification link for certifications
+      // Add verification link card for certifications
       if(d.certifications.verificationLink) {
-        const verifyLink = document.createElement("a");
-        verifyLink.className = "chip";
-        verifyLink.textContent = "📋 Verify All Certificates";
-        verifyLink.href = d.certifications.verificationLink;
-        verifyLink.target = "_blank";
-        verifyLink.rel = "noopener";
-        verifyLink.style.background = "var(--accent)";
-        verifyLink.style.color = "white";
-        cert.appendChild(verifyLink);
+        const verifyCard = document.createElement("div");
+        verifyCard.className = "skill-group";
+        verifyCard.innerHTML = `
+          <div class="chips">
+            <a href="${d.certifications.verificationLink}" target="_blank" rel="noopener" class="chip" style="background: var(--accent); color: white;">
+              📋 Verify All Certificates
+            </a>
+          </div>
+        `;
+        certGrid.appendChild(verifyCard);
       }
       
       // set accent color from data
