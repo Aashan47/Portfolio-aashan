@@ -311,45 +311,16 @@ a:hover::after{transform:scaleX(1)}
 }
 /* Remove general chip hover - will add specific hover for certifications only */
 
-/* Achievements specific styling for better spacing */
-/* container of badges */
-
-/* Center Achievements and Certifications sections */
-#achievementsList, #certificationsList {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 12px;
-  justify-content: center;
-  align-items: center;
-}
-
-#achievementsList .chip, #certificationsList .chip {
-  display: inline-flex;
-  align-items: center;
-  white-space: nowrap;
-  word-break: keep-all;
-  overflow-wrap: normal;
-  margin: 0;
-  font-size: 13px;
-  min-height: 32px;
-  padding: 8px 16px;
-}
-
-#achievementsList .chip {
-  cursor: default;
-  transition: none;
-}
-
-#certificationsList .chip {
+/* Certification links styling */
+.certification-grid .chip {
   text-decoration: none;
 }
 
-#certificationsList .chip::after {
+.certification-grid .chip::after {
   content: none;
 }
 
-#certificationsList .chip:hover {
+.certification-grid .chip:hover {
   background: var(--accent);
   color: white;
   transform: translateY(-1px);
@@ -407,6 +378,18 @@ a:hover::after{transform:scaleX(1)}
 }
 .skill-group h4{ margin:0 0 8px 0; color: var(--accent); }
 .skill-group .chips{ display:flex; flex-wrap:wrap; gap:8px }
+
+/* Achievements and Certifications - Same styling as Skills */
+.achievement-grid, .certification-grid { 
+  display:grid; 
+  grid-template-columns:repeat(2,1fr); 
+  gap:12px 
+}
+@media (min-width:700px){ 
+  .achievement-grid, .certification-grid { 
+    grid-template-columns:repeat(3,1fr) 
+  } 
+}
 
 /* Footer */
 footer{ 
