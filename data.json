@@ -115,18 +115,26 @@
     },
     {
       "title": "Fraudulent Transaction Detection System",
-      "summary": "End-to-end ML pipeline (Scikit-learn, SMOTE, boosting) on imbalanced banking data with strong fraud detection performance.",
-      "metric": "F1 94%, false negatives -23%",
+      "summary": "Fraud detection model trained on 284,807 real Kaggle credit card transactions. Features complete ML pipeline with preprocessing, Random Forest classifier, and professional web demo interface for real-time fraud risk assessment.",
+      "metric": "89.5% precision, 78.6% recall, ROC-AUC 0.949",
       "tags": [
         "Python",
         "Scikit-learn",
-        "SMOTE",
-        "XGBoost"
+        "Random Forest",
+        "Flask"
       ],
-      "linkLabel": "Code",
-      "link": "https://github.com/Aashan47/Fraudulent-Transaction-Detection-System",
-      "image": "assets/img/fraud.png",
-      "alt": "Fraud detection project"
+      "links": [
+        {
+          "label": "Code",
+          "url": "https://github.com/Aashan47/Fraudulent-Transaction-Detection-System"
+        },
+        {
+          "label": "Demo",
+          "url": "https://youtu.be/JkbwKJJ0cQY"
+        }
+      ],
+      "image": "assets/img/Fraud-Thumbnail.jpg",
+      "alt": "Fraud detection system"
     },
     {
       "title": "EquiSpeak: Real-time Sign Language Communication System",
