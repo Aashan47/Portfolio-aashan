@@ -33,7 +33,7 @@
     "Diffusion Models",
     "Large-Scale Forecasting Systems"
   ],
-  "projects": [
+  "_commented_projects": [
     {
       "title": "Revisitation Aware Video Segmentation",
       "summary": "Built PSPNet segmentation with motion tracking and revisit detection to fix static scene and loop overcounting in urban videos.",
@@ -60,7 +60,9 @@
       ],
       "image": "assets/img/video-seg.png",
       "alt": "Video segmentation system"
-    },
+    }
+  ],
+  "projects": [
     {
       "title": "AlphaEarth Climate Monitoring System",
       "summary": "High-resolution (10 m) climate insights using geospatial pipelines. Integrated a foundation model to enable temperature prediction, similarity search, and change detection.",
