@@ -87,6 +87,30 @@
       "alt": "AlphaEarth system"
     },
     {
+      "title": "LayoutCraft: RL Agent for Layout Arrangement",
+      "summary": "Reinforcement learning agent trained with PPO that arranges geometric shapes according to natural language instructions. Features dual reward system combining rule-based evaluation with CLIP vision-language scoring for spatial constraint satisfaction.",
+      "metric": "80% success rate on placement tasks, 0.75 avg rule score",
+      "tags": [
+        "Python",
+        "PPO",
+        "RL",
+        "CLIP",
+        "Gymnasium"
+      ],
+      "links": [
+        {
+          "label": "Code",
+          "url": "https://github.com/Aashan47/layoutcraft-RL-Agent-for-Layout-Arrangement"
+        },
+        {
+          "label": "Demo",
+          "url": "https://youtu.be/Jj9wbNk2Wvw"
+        }
+      ],
+      "image": "assets/img/thumbnail-layoutcraft.jpg",
+      "alt": "LayoutCraft RL agent arranging shapes according to text prompts"
+    },
+    {
       "title": "Urban Data Center Site and Risk Assessment Platform",
       "summary": "Comprehensive web application for evaluating optimal data center locations using NASA Earth Observation data, urban demographics, and infrastructure analysis. Features interactive mapping, multi-factor risk assessment, automated scoring, and professional reporting capabilities.",
       "metric": "Multi-site comparison with real-time environmental analysis",
@@ -114,6 +138,34 @@
       ],
       "image": "assets/img/Thumbnail-Urban-Data-Center.jpg",
       "alt": "Urban Data Center Assessment Platform"
+    },
+
+    {
+      "title": "Revisitation Aware Video Segmentation",
+      "summary": "Built PSPNet segmentation with motion tracking and revisit detection to fix static scene and loop overcounting in urban videos.",
+      "metric": "mIoU +1.9, MOTA +15.3, ID switches −52%, static overcount −50%",
+      "tags": [
+        "Python",
+        "PSPNet",
+        "Computer Vision",
+        "Cityscapes"
+      ],
+      "links": [
+        {
+          "label": "Code",
+          "url": "https://github.com/Aashan47/Video-Segmentation/tree/main"
+        },
+        {
+          "label": "Basic Segmentation Demo",
+          "url": "https://www.youtube.com/watch?v=HwiyFk_XMjw"
+        },
+        {
+          "label": "Scene Detection Demo",
+          "url": "https://www.youtube.com/shorts/m0hQ2HnS5pw"
+        }
+      ],
+      "image": "assets/img/video-seg.png",
+      "alt": "Video segmentation system"
     },
     {
       "title": "Fraudulent Transaction Detection System",
