@@ -107,8 +107,28 @@
           "url": "https://youtu.be/Jj9wbNk2Wvw"
         }
       ],
-      "image": "assets/img/thumbnail-layoutcraft.png",
+      "image": "assets/img/thumbnail-layoutcraft.jpg",
       "alt": "LayoutCraft RL agent arranging shapes according to text prompts"
+    },
+    {
+      "title": "3D U-Net for Brain Tumor Segmentation",
+      "summary": "3D U-Net with residual blocks for medical image segmentation on BraTS dataset. Features deep supervision, attention gates, comprehensive metrics (Dice, Hausdorff95), and explainability tools (Grad-CAM, Integrated Gradients).",
+      "metric": "WT Dice >0.88, TC Dice >0.82, ET Dice >0.78",
+      "tags": [
+        "Python",
+        "PyTorch",
+        "MONAI",
+        "Medical AI",
+        "3D CNN"
+      ],
+      "links": [
+        {
+          "label": "Code",
+          "url": "https://github.com/Aashan47/3D-U-Net-for-brain-tumor-segmentation"
+        }
+      ],
+      "image": "assets/img/predicted-unet.jpg",
+      "alt": "3D brain tumor segmentation with U-Net architecture"
     },
     {
       "title": "Urban Data Center Site and Risk Assessment Platform",
