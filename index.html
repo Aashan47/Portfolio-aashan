@@ -3,233 +3,127 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Aashan Javed — Portfolio</title>
-  <meta name="description" content="Machine Learning & AI engineer focused on climate intelligence, geospatial modeling, and production ML systems."/>
-  <link rel="canonical" href="https://your-domain.example"/>
-  <meta property="og:title" content="Aashan Javed — Portfolio"/>
-  <meta property="og:description" content="Climate intelligence, geospatial modeling, production ML."/>
+  <title>Aashan Javed — ML Engineer</title>
+  <meta name="description" content="ML engineer working on climate intelligence and geospatial systems. Production ML, end-to-end."/>
+  <link rel="canonical" href="https://aashanjaved.com"/>
+  <meta property="og:title" content="Aashan Javed — ML Engineer"/>
+  <meta property="og:description" content="Climate, geospatial, production ML."/>
   <meta property="og:type" content="website"/>
-  <meta property="og:url" content="https://your-domain.example"/>
-  <meta name="twitter:card" content="summary_large_image"/>
+  <meta property="og:url" content="https://aashanjaved.com"/>
+  <meta name="twitter:card" content="summary"/>
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css"/>
 </head>
 <body>
   <a class="skip-link" href="#home">Skip to content</a>
+
   <header class="header">
     <div class="container nav" role="navigation" aria-label="Primary">
-      <div class="brand" id="brand">
-        <img class="profile-photo" src="assets/img/Profile Photo.png" alt="Aashan Javed" />
-        <span>Aashan Javed</span>
-      </div>
+      <a class="brand" href="#home">Aashan Javed</a>
       <ul>
-        <li><a href="#home" data-section="home">Home</a></li>
         <li><a href="#projects" data-section="projects">Projects</a></li>
-        <li><a href="#publications" data-section="publications">Publications</a></li>
-        <li><a href="#about" data-section="about">Research Interests</a></li>
+        <li><a href="#approach" data-section="approach">Approach</a></li>
         <li><a href="#experience" data-section="experience">Experience</a></li>
+        <li><a href="#publications" data-section="publications">Publications</a></li>
         <li><a href="#skills" data-section="skills">Skills</a></li>
-        <li><a href="#achievements" data-section="achievements">Achievements</a></li>
-        <li><a href="#certifications" data-section="certifications">Certifications</a></li>
         <li><a href="#contact" data-section="contact">Contact</a></li>
       </ul>
     </div>
   </header>
 
-  <main id="home" class="section">
-    <div class="container hero">
-      <div>
-        <div class="hero-intro">
-          <div class="hero-text">
-            <div class="kicker">Welcome</div>
-            <h1 class="name">Aashan Javed</h1>
-            <p class="tag lead">ML & AI engineer building intelligent and practical ML systems. Interested in pursuing research in climate intelligence.</p>
-          </div>
-        </div>
+  <main id="home" class="hero-section">
+    <div class="container">
+      <div class="hero">
+        <p class="kicker" id="heroRole"></p>
+        <h1 class="name" id="heroName"></h1>
+        <p class="tagline" id="heroTagline"></p>
         <div class="hero-actions">
-          <a id="emailBtn" class="btn" href="#" role="button">
-            <img class="icon" src="assets/icons/email.svg" alt="" aria-hidden="true"/> Copy Email
-          </a>
-          <!-- Resume download feature commented out
-          <div class="resume-dropdown-container">
-            <a id="resumeBtn" class="btn primary" href="#" role="button">
-              <img class="icon" src="assets/icons/pdf.svg" alt="" aria-hidden="true"/> Download Resume (PDF)
-            </a>
-            <div id="resumeDropdown" class="resume-dropdown hidden">
-              <div class="resume-option" data-type="europass">
-                <strong>Europass Format</strong>
-                <span class="resume-desc">Standard European CV format</span>
-              </div>
-              <div class="resume-option" data-type="standard">
-                <strong>Standard Format</strong>
-                <span class="resume-desc">Modern professional format</span>
-              </div>
-            </div>
-          </div>
-          -->
+          <a id="emailBtn" class="btn primary" href="#" role="button">Copy email</a>
+          <a id="socialGithub" class="btn ghost" target="_blank" rel="noopener">GitHub</a>
+          <a id="socialLinkedin" class="btn ghost" target="_blank" rel="noopener">LinkedIn</a>
         </div>
-        <div class="socials">
-          <a id="socialLinkedin" class="icon-btn" aria-label="LinkedIn" target="_blank" rel="noopener">
-            <img class="icon" src="assets/icons/linkedin.svg" alt="" aria-hidden="true"/>
-          </a>
-          <a id="socialGithub" class="icon-btn" aria-label="GitHub" target="_blank" rel="noopener">
-            <img class="icon" src="assets/icons/github.svg" alt="" aria-hidden="true"/>
-          </a>
-        </div>
-      </div>
-      <div>
-        <article class="card">
-          <h3>What I do</h3>
-<p>I research and develop AI systems that drive meaningful change in climate science and environmental sustainability. My work focuses on bridging the gap between cutting-edge research and real-world impact, from creating 10-meter resolution climate monitoring systems that help track environmental changes, to building intelligent systems for autonomous driving and urban planning. I'm passionate about climate informatics, computer vision, and geospatial AI research that doesn't just advance the field, but actively contributes to solving our most pressing environmental and sustainability challenges.</p>
-
-          <p class="muted">Friendly, professional, and thoughtful about performance.</p>
-        </article>
       </div>
     </div>
   </main>
 
   <section id="projects" class="section">
     <div class="container">
-      <header><h2>Projects</h2><p class="lead">Some of the recent work and projects.</p></header>
-      <div class="grid"></div>
+      <header>
+        <p class="eyebrow">Selected work</p>
+        <h2>Projects</h2>
+      </header>
+      <div id="projectList" class="project-list"></div>
     </div>
   </section>
 
-  <section id="publications" class="section">
-    <div class="container">
-      <header><h2>Publications</h2><p class="lead">Preprints and research contributions.</p></header>
-      <ul id="pubList"></ul>
-    </div>
-  </section>
-
-  <section id="about" class="section">
-    <div class="container">
-      <header><h2>Research Interests</h2></header>
-      <p>Machine Learning, Generative AI, Geospatial Modeling, Climate Informatics, Diffusion Models, Large-Scale Forecasting Systems</p>
+  <section id="approach" class="section">
+    <div class="container narrow">
+      <header>
+        <p class="eyebrow">How I think</p>
+        <h2>Approach</h2>
+      </header>
+      <div id="approachList" class="approach-list"></div>
     </div>
   </section>
 
   <section id="experience" class="section">
-    <div class="container">
-      <header><h2>Experience</h2></header>
-      <div class="timeline" id="timeline" aria-label="Career timeline"></div>
+    <div class="container narrow">
+      <header>
+        <p class="eyebrow">Experience</p>
+        <h2>Where I've worked</h2>
+      </header>
+      <div id="timeline" class="timeline" aria-label="Career timeline"></div>
+    </div>
+  </section>
+
+  <section id="publications" class="section">
+    <div class="container narrow">
+      <header>
+        <p class="eyebrow">Research</p>
+        <h2>Publications</h2>
+      </header>
+      <ul id="pubList" class="pub-list"></ul>
     </div>
   </section>
 
   <section id="skills" class="section">
     <div class="container">
-      <header><h2>Skills</h2></header>
+      <header>
+        <p class="eyebrow">Stack</p>
+        <h2>Skills</h2>
+      </header>
       <div id="skillGrid" class="skill-grid"></div>
+      <p class="cert-line" id="eduLine"></p>
+      <p class="cert-line" id="certLine"></p>
     </div>
   </section>
 
-  <section id="achievements" class="section">
-    <div class="container">
-      <header><h2>Achievements</h2></header>
-      <div class="achievement-grid"></div>
-    </div>
-  </section>
-
-  <section id="certifications" class="section">
-    <div class="container">
-      <header><h2>Certifications</h2></header>
-      <div class="certification-grid"></div>
-    </div>
-  </section>
-
-
-  <section id="contact" class="section">
-    <div class="container center">
-      <div>
-        <h2>Contact</h2>
-        <p>Best way to reach me is email.</p>
-        <p><a id="footerEmail" href="mailto:aashanjaved.cs@gmail.com"><span>aashanjaved.cs@gmail.com</span></a></p>
-        <p class="mt-12">
-          <a id="footerLinkedin" class="btn" target="_blank" rel="noopener"><img class="icon" src="assets/icons/linkedin.svg" alt="" aria-hidden="true"/> LinkedIn</a>
-          <a id="footerGithub" class="btn" target="_blank" rel="noopener"><img class="icon" src="assets/icons/github.svg" alt="" aria-hidden="true"/> GitHub</a>
-        </p>
-      </div>
+  <section id="contact" class="section contact-section">
+    <div class="container narrow">
+      <header>
+        <p class="eyebrow">Contact</p>
+        <h2>Let's talk</h2>
+      </header>
+      <p>Best way to reach me is email — <a id="emailLink" href="#"><span id="emailText"></span></a>. I read everything.</p>
+      <p class="contact-links">
+        <a id="footerLinkedin" target="_blank" rel="noopener">LinkedIn</a>
+        <span class="sep">·</span>
+        <a id="footerGithub" target="_blank" rel="noopener">GitHub</a>
+      </p>
     </div>
   </section>
 
   <footer>
-    <div class="container muted">
-      <small>&copy; <span id="year"></span> <span id="brandFoot">Aashan Javed</span></small>
+    <div class="container muted small">
+      <span>&copy; <span id="year"></span> Aashan Javed</span>
     </div>
   </footer>
 
   <script src="assets/js/main.js" defer></script>
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
-    document.getElementById("brandFoot").textContent = "Aashan Javed";
-    // hydrate achievements and certifications from data.json after main.js loads
-    fetch("data.json").then(r=>r.json()).then(d=>{
-      // Achievements grid - Skills-like layout
-      const achGrid = document.querySelector(".achievement-grid");
-      
-      // Create individual achievement cards
-      d.achievements.items.forEach(a=>{
-        const card = document.createElement("div");
-        card.className = "skill-group";
-        card.innerHTML = `
-          <div class="chips">
-            <span class="chip">${a}</span>
-          </div>
-        `;
-        achGrid.appendChild(card);
-      });
-      
-      // Add verification link card for achievements
-      if(d.achievements.verificationLink) {
-        const verifyCard = document.createElement("div");
-        verifyCard.className = "skill-group";
-        verifyCard.innerHTML = `
-          <div class="chips">
-            <a href="${d.achievements.verificationLink}" target="_blank" rel="noopener" class="chip" style="background: var(--accent); color: white;">
-              📋 Verify All Achievements
-            </a>
-          </div>
-        `;
-        achGrid.appendChild(verifyCard);
-      }
-      
-      // Certifications grid - Skills-like layout
-      const certGrid = document.querySelector(".certification-grid");
-      
-      // Create individual certification cards
-      d.certifications.items.forEach(c=>{
-        const card = document.createElement("div");
-        card.className = "skill-group";
-        card.innerHTML = `
-          <div class="chips">
-            <a href="${c.link}" target="_blank" rel="noopener" class="chip">${c.name}</a>
-          </div>
-        `;
-        certGrid.appendChild(card);
-      });
-      
-      // Add verification link card for certifications
-      if(d.certifications.verificationLink) {
-        const verifyCard = document.createElement("div");
-        verifyCard.className = "skill-group";
-        verifyCard.innerHTML = `
-          <div class="chips">
-            <a href="${d.certifications.verificationLink}" target="_blank" rel="noopener" class="chip" style="background: var(--accent); color: white;">
-              📋 Verify All Certificates
-            </a>
-          </div>
-        `;
-        certGrid.appendChild(verifyCard);
-      }
-      
-      // set accent color from data
-      const accent = d?.meta?.accent;
-      if(accent){
-        document.documentElement.style.setProperty("--accent", accent);
-      }
-    });
   </script>
 </body>
 </html>

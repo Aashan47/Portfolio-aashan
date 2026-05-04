@@ -1,262 +1,195 @@
 {
   "meta": {
-    "title": "Aashan Javed \u2014 Portfolio",
-    "description": "Machine Learning & AI engineer focused on climate intelligence, geospatial modeling, and production ML systems.",
+    "title": "Aashan Javed — ML Engineer",
+    "description": "ML engineer building production systems across climate, GenAI, and ranking. Currently shipping a Spatiotemporal Temperature Model at FortyGuard, in collaboration with NVIDIA.",
     "canonical": "https://aashanjaved.com",
-    "accent": "#2563eb"
+    "accent": "#0a0a0a"
   },
   "person": {
     "name": "Aashan Javed",
-    "tagline": "ML & AI engineer building and researching about intelligent, practical and sustainable ML systems.",
+    "role": "ML Engineer — GenAI and production systems",
+    "tagline": "I build production ML end-to-end — pipelines, models, deployment, monitoring. Worked on and developed a Spatiotemporal Large Temperature Model at FortyGuard, in collaboration with NVIDIA.",
     "email": "aashanjaved.cs@gmail.com",
     "linkedin": "https://www.linkedin.com/in/aashan-javed/",
-    "github": "https://github.com/Aashan47",
-    "resumes": {
-      "europass": {
-        "name": "Europass Format",
-        "file": "resume/Resume.pdf",
-        "description": "Standard European CV format"
-      },
-      "standard": {
-        "name": "Standard Format", 
-        "file": "resume/Resume_updated.pdf",
-        "description": "Modern professional format"
-      }
-    },
-    "open_to": "Open to research-driven roles."
+    "github": "https://github.com/Aashan47"
   },
-  "research_interests": [
-    "Machine Learning",
-    "Generative AI",
-    "Geospatial Modeling",
-    "Climate Informatics",
-    "Diffusion Models",
-    "Large-Scale Forecasting Systems"
-  ],
-  "_commented_projects": [
+  "how_i_think": [
     {
-      "title": "Revisitation Aware Video Segmentation",
-      "summary": "Built PSPNet segmentation with motion tracking and revisit detection to fix static scene and loop overcounting in urban videos.",
-      "metric": "mIoU +1.9, MOTA +15.3, ID switches −52%, static overcount −50%",
-      "tags": [
-        "Python",
-        "PSPNet",
-        "Computer Vision",
-        "Cityscapes"
-      ],
-      "links": [
-        {
-          "label": "Code",
-          "url": "https://github.com/Aashan47/Video-Segmentation/tree/main"
-        },
-        {
-          "label": "Basic Segmentation Demo",
-          "url": "https://www.youtube.com/watch?v=HwiyFk_XMjw"
-        },
-        {
-          "label": "Scene Detection Demo",
-          "url": "https://www.youtube.com/shorts/m0hQ2HnS5pw"
-        }
-      ],
-      "image": "assets/img/video-seg.png",
-      "alt": "Video segmentation system"
+      "heading": "Start with the simplest model that could work.",
+      "body": "A logistic regression that ships beats a transformer that doesn't. Most 'model' problems turn out to be data problems — better features, cleaner labels, or being honest about what the data can't tell you. I reach for deep models when the simpler one has clearly plateaued, not before."
+    },
+    {
+      "heading": "A number without context isn't a result.",
+      "body": "'+9% NDCG@5' only matters if I can tell you what baseline I'm beating, what split it's measured on, and what it would cost to be wrong. I try to write that down before I start training, not after — and I separate randomized-impression evaluation from logged-click evaluation, because position bias will quietly inflate everything otherwise."
+    },
+    {
+      "heading": "The hard part is rarely the model.",
+      "body": "It's the pipeline that brings ERA5, Sentinel-2, and ground-truth into the same coordinate system without silently dropping rows. It's the inference path that's fast enough on the user's hardware. It's the drift detector that retrains the model before anyone notices the forecast went stale. I treat that work as the actual product."
     }
   ],
   "projects": [
     {
-      "title": "AlphaEarth Climate Monitoring System",
-      "summary": "High-resolution (10 m) climate insights using geospatial pipelines. Integrated a foundation model to enable temperature prediction, similarity search, and change detection.",
-      "metric": "Anomaly detection accuracy +17% vs baseline",
-      "tags": [
-        "Python",
-        "Geospatial",
-        "Embeddings",
-        "Earth Engine"
+      "title": "Beijing Air-Quality Forecasting — MLOps Pipeline",
+      "tagline": "Drift-aware PM2.5 forecaster on a 9-point Beijing grid. Airflow + SageMaker + Evidently, end-to-end.",
+      "problem": "Most air-quality forecasting demos are static notebooks. The real problem is keeping a model fresh under drift — sensors fail, seasons shift, traffic patterns change — without manual retraining every week.",
+      "approach": {
+        "data": "Open-Meteo PM2.5 + weather across a 9-point grid over Beijing (39.75–40.05°N, 116.15–116.65°E); ~18,500 historical rows.",
+        "models": "XGBoost regressor (200 rounds, max_depth=6) with rush-hour, hour-of-day, and PM2.5 lag/rolling features. Recursive multi-step forecast for 1 h to 7 d horizons.",
+        "why": "XGBoost over deep models because the dataset size (~18.5K rows) and the operational requirement (drift-aware retraining every 6 h) make tabular gradient boosting the right tool. Save the deep model for when you have the data and the inference budget."
+      },
+      "results": [
+        "RMSE approval gate at 15.0 µg/m³ for production promotion",
+        "Drift-triggered retrain when >50% of features show PSI shift (Evidently AI)",
+        "End-to-end pipeline runs every 6 hours autonomously"
       ],
+      "deployment": "Airflow 2.10 orchestrates ingest → features → drift → conditional retrain. SageMaker training + Model Registry with RMSE-gated approval. FastAPI serves point, grid, and multi-day endpoints. Docker Compose on EC2 with Nginx + Postgres. Leaflet + Chart.js dashboard auto-refreshes every 5 min.",
+      "tags": ["Airflow", "SageMaker", "Evidently", "XGBoost", "FastAPI", "Docker", "AWS"],
       "links": [
-        {
-          "label": "Code",
-          "url": "https://github.com/Aashan47/Alpha-Earth---Climate-Monitoring-System"
-        },
-        {
-          "label": "Demo",
-          "url": "https://www.youtube.com/watch?v=Glg3FgF3DnM"
-        }
+        {"label": "Code", "url": "https://github.com/Aashan47/Beijing-Air-Quality-Forecasting-MLOps-Pipeline"},
+        {"label": "Demo", "url": "https://www.youtube.com/watch?v=X04EYaTg3Os"}
+      ],
+      "image": "assets/img/air-quality.png",
+      "alt": "Beijing air-quality forecasting dashboard"
+    },
+    {
+      "title": "Production Learning-to-Rank for Hotel Search",
+      "tagline": "LambdaMART + inverse propensity scoring on 9.9M Expedia rows. Beats the baseline ranker on every metric.",
+      "problem": "Hotel search ranking is fundamentally listwise — relevance is relative within each result set. And training on logged clicks just teaches the model to mimic the existing ranker, because position bias dominates the label signal.",
+      "approach": {
+        "data": "Expedia search data — 9.9M rows across 400K+ queries, of which 18,105 are randomized-impression queries that give unbiased ground truth.",
+        "models": "LightGBM LambdaMART over ~40 features (raw properties, match signals, Bayesian-smoothed historical engagement). Inverse Propensity Scoring with a power-law position-bias model: P(pos) = α · pos^(−β); reweight clicks by 1 / P(examine | position), capped at the 75th percentile.",
+        "why": "LambdaMART optimizes NDCG across full lists, matching the listwise objective. IPS is the cheapest credible answer to position bias — and it's measurable, because the randomization queries give a proper unbiased test set."
+      },
+      "results": [
+        "NDCG@5 +9.5% (0.2913 → 0.3189)",
+        "NDCG@10 +8.4% (0.3603 → 0.3906)",
+        "MRR +7.8% (0.2971 → 0.3203)",
+        "Wins on 30.9% of 59,903 test queries; ties on 37.4% (booked hotel already #1)"
+      ],
+      "deployment": "Reproducible offline training and bias-corrected evaluation pipeline.",
+      "tags": ["LightGBM", "LambdaMART", "Ranking", "IPS", "Python"],
+      "links": [
+        {"label": "Code", "url": "https://github.com/Aashan47/Production-Learning-to-Rank-LTR-System-Hotel-Search-Ranking"}
+      ]
+    },
+    {
+      "title": "Visual Research Assistant — Multimodal Agentic RAG",
+      "tagline": "Local-first agentic RAG over PDFs (text + tables + figures) with hallucination-aware retry.",
+      "problem": "Most 'chatbot over PDF' tools fall apart on real research papers — they ignore figures and tables, hallucinate citations, and lock you into cloud APIs. I wanted a multimodal agent that reasons over text, tables, and figures, runs locally on consumer GPUs, and tells you when it's wrong.",
+      "approach": {
+        "data": "Multi-page PDFs partitioned into text blocks, tables (preserved as HTML), and rasterized figures. Optional user-uploaded images for cross-modal queries.",
+        "models": "LangGraph state machine over five nodes — Router → Retriever → Generator → Critic → Finalize. Generator selects llava:7b for vision queries, llama3.2:1b for text. Critic is a separate model family with Pydantic-structured output for hallucination detection. ChromaDB + nomic-embed-text for retrieval.",
+        "why": "Cross-family critic so the judge isn't biased toward the generator's mistakes. Multi-vector retrieval (embed summaries, return originals) so semantic search doesn't truncate context. Retry only on hallucination — everything else surfaces on the first pass to keep latency honest."
+      },
+      "results": [
+        "10-page PDF ingestion: 3–5 s",
+        "Text queries: 20–30 s",
+        "Image / cross-modal queries: 60–120 s (vision-bound)",
+        "Runs on 6 GB VRAM, ~7 GB total model disk"
+      ],
+      "deployment": "Streamlit UI with citation badges and an agent-trace timeline. Docker Compose bundles Ollama + the app. SQLite checkpointer for resumable runs; structured JSON logs.",
+      "tags": ["LangGraph", "Ollama", "Multimodal", "RAG", "ChromaDB", "Streamlit"],
+      "links": [
+        {"label": "Code", "url": "https://github.com/Aashan47/Visual-Research-Assistant-Multimodal-Agentic-RAG"},
+        {"label": "Demo", "url": "https://www.youtube.com/watch?v=VEYBZmQNwGY"}
+      ],
+      "image": "assets/img/RAG.png",
+      "alt": "Visual Research Assistant agentic RAG interface"
+    },
+    {
+      "title": "AlphaEarth Climate Monitoring",
+      "tagline": "10 m climate insights from coarse inputs using geospatial foundation embeddings.",
+      "problem": "Climate datasets like ERA5 are ≥1 km — too coarse to capture the neighborhood-scale heat, vegetation stress, or change patterns that real decisions depend on.",
+      "approach": {
+        "data": "Sentinel-2 + ERA5 / ERA5-Land via Google Earth Engine.",
+        "models": "Geospatial foundation embeddings + lightweight decoders for temperature prediction, similarity search, and change detection.",
+        "why": "One pretrained backbone serves multiple downstream tasks instead of training each from scratch — critical when imagery is multi-modal and labels are thin."
+      },
+      "results": [
+        "Output resolution: 10 m from ≥1 km inputs",
+        "Anomaly detection accuracy +17% vs baseline"
+      ],
+      "deployment": "Earth Engine pipelines + Python; reproducible end-to-end with paper and code.",
+      "tags": ["Python", "Earth Engine", "Foundation models", "Geospatial"],
+      "links": [
+        {"label": "Code", "url": "https://github.com/Aashan47/Alpha-Earth---Climate-Monitoring-System"},
+        {"label": "Paper", "url": "https://zenodo.org/records/17171331"},
+        {"label": "Demo", "url": "https://www.youtube.com/watch?v=Glg3FgF3DnM"}
       ],
       "image": "assets/img/Thumbnail-Alpha Earth.png",
-      "alt": "AlphaEarth system"
+      "alt": "AlphaEarth climate monitoring system"
     },
-    
     {
-      "title": "Urban Data Center Site and Risk Assessment Platform",
-      "summary": "Comprehensive web application for evaluating optimal data center locations using NASA Earth Observation data, urban demographics, and infrastructure analysis. Features interactive mapping, multi-factor risk assessment, automated scoring, and professional reporting capabilities.",
-      "metric": "Multi-site comparison with real-time environmental analysis",
-      "tags": [
-        "React",
-        "Material-UI",
-        "Python",
-        "Flask",
-        "NASA APIs",
-        "OpenStreetMap"
+      "title": "Urban Data-Center Siting",
+      "tagline": "Multi-factor risk scoring for data center site selection using NASA EO data.",
+      "problem": "Data center siting is a multi-factor decision (climate risk, water, power, demographics) usually done in spreadsheets and consultancy reports — slow, opaque, hard to defend.",
+      "approach": {
+        "data": "NASA Earth Observation, OpenStreetMap, demographic and infrastructure layers.",
+        "models": "Composite scoring with multi-factor risk weighting, surfaced through an interactive comparison map.",
+        "why": "Decision-support tooling — interpretable scoring beats a black-box ranker when stakeholders need to defend the choice to legal and finance."
+      },
+      "results": [
+        "Multi-site comparison with real-time environmental analysis",
+        "Automated reports + interactive map UI"
       ],
+      "deployment": "React + Material-UI frontend, Flask API. Live demo videos.",
+      "tags": ["React", "Flask", "NASA APIs", "OpenStreetMap"],
       "links": [
-        {
-          "label": "Code",
-          "url": "https://github.com/Aashan47/Urban-Data-Center-Site-and-Risk-Assessment"
-        },
-        {
-          "label": "Quick Demo (2 min)",
-          "url": "https://youtu.be/Hd5zVOhxH78"
-        },
-        {
-          "label": "Full Demo (5 min)",
-          "url": "https://youtu.be/GxkEzKhGeb0"
-        }
+        {"label": "Code", "url": "https://github.com/Aashan47/Urban-Data-Center-Site-and-Risk-Assessment"},
+        {"label": "Quick demo", "url": "https://youtu.be/Hd5zVOhxH78"},
+        {"label": "Full demo", "url": "https://youtu.be/GxkEzKhGeb0"}
       ],
       "image": "assets/img/Thumbnail-Urban-Data-Center.jpg",
-      "alt": "Urban Data Center Assessment Platform"
-    },
-
-    {
-      "title": "Revisitation Aware Video Segmentation",
-      "summary": "Built PSPNet segmentation with motion tracking and revisit detection to fix static scene and loop overcounting in urban videos.",
-      "metric": "mIoU +1.9, MOTA +15.3, ID switches −52%, static overcount −50%",
-      "tags": [
-        "Python",
-        "PSPNet",
-        "Computer Vision",
-        "Cityscapes"
-      ],
-      "links": [
-        {
-          "label": "Code",
-          "url": "https://github.com/Aashan47/Video-Segmentation/tree/main"
-        },
-        {
-          "label": "Basic Segmentation Demo",
-          "url": "https://www.youtube.com/watch?v=HwiyFk_XMjw"
-        },
-        {
-          "label": "Scene Detection Demo",
-          "url": "https://www.youtube.com/shorts/m0hQ2HnS5pw"
-        }
-      ],
-      "image": "assets/img/video-seg.png",
-      "alt": "Video segmentation system"
-    },
-
-    {
-      "title": "LayoutCraft: RL Agent for Layout Arrangement",
-      "summary": "Reinforcement learning agent trained with PPO that arranges geometric shapes according to natural language instructions. Features dual reward system combining rule-based evaluation with CLIP vision-language scoring for spatial constraint satisfaction.",
-      "metric": "80% success rate on placement tasks, 0.75 avg rule score",
-      "tags": [
-        "Python",
-        "PPO",
-        "RL",
-        "CLIP",
-        "Gymnasium"
-      ],
-      "links": [
-        {
-          "label": "Code",
-          "url": "https://github.com/Aashan47/layoutcraft-RL-Agent-for-Layout-Arrangement"
-        },
-        {
-          "label": "Demo",
-          "url": "https://youtu.be/Jj9wbNk2Wvw"
-        }
-      ],
-      "image": "assets/img/thumbnail-layoutcraft.png",
-      "alt": "LayoutCraft RL agent arranging shapes according to text prompts"
+      "alt": "Urban data center site assessment platform"
     },
     {
-      "title": "3D U-Net for Brain Tumor Segmentation",
-      "summary": "3D U-Net with residual blocks for medical image segmentation on BraTS dataset. Features deep supervision, attention gates, comprehensive metrics (Dice, Hausdorff95), and explainability tools (Grad-CAM, Integrated Gradients).",
-      "metric": "WT Dice >0.88, TC Dice >0.82, ET Dice >0.78",
-      "tags": [
-        "Python",
-        "PyTorch",
-        "MONAI",
-        "Medical AI",
-        "3D CNN"
+      "title": "Budget-Aware Fraud Detection",
+      "tagline": "Stable Top-K alerts under label delay using split-conformal guarantees — 94% precision held at 2-week label lag.",
+      "problem": "In production fraud, labels arrive days late and drift constantly. Most academic models assume labels exist now — so their alert lists thrash, and analysts lose trust.",
+      "approach": {
+        "data": "Streaming fraud benchmarks with simulated label delay (14-day default) and concept drift; investigation budget of 500 transactions per period.",
+        "models": "Calibrated Top-K decisioning with split-conformal coverage guarantees on top of an underlying classifier; 5-fold cross-validation.",
+        "why": "Conformal because it gives finite-sample guarantees without assuming the underlying classifier is calibrated — useful when the score distribution drifts."
+      },
+      "results": [
+        "94% precision maintained under 2-week label delays",
+        "+23% budget efficiency vs baseline approaches",
+        "Sub-second inference latency for real-time scoring"
       ],
+      "deployment": "Research code + paper preprint.",
+      "tags": ["Conformal prediction", "Streaming", "Python"],
       "links": [
-        {
-          "label": "Code",
-          "url": "https://github.com/Aashan47/3D-U-Net-for-brain-tumor-segmentation"
-        }
-      ],
-      "image": "assets/img/predicted-unet.jpg",
-      "alt": "3D brain tumor segmentation with U-Net architecture"
-    },
-    
-    {
-      "title": "Fraudulent Transaction Detection System",
-      "summary": "Fraud detection model trained on 284,807 real Kaggle credit card transactions. Features complete ML pipeline with preprocessing, Random Forest classifier, and professional web demo interface for real-time fraud risk assessment.",
-      "metric": "89.5% precision, 78.6% recall, ROC-AUC 0.949",
-      "tags": [
-        "Python",
-        "Scikit-learn",
-        "Random Forest",
-        "Flask"
-      ],
-      "links": [
-        {
-          "label": "Code",
-          "url": "https://github.com/Aashan47/Fraudulent-Transaction-Detection-System"
-        },
-        {
-          "label": "Demo",
-          "url": "https://youtu.be/JkbwKJJ0cQY"
-        }
+        {"label": "Paper", "url": "https://zenodo.org/records/17170373"},
+        {"label": "Code", "url": "https://github.com/Aashan47/Budget-Aware-Fraud-Detection-with-Label-Delay"}
       ],
       "image": "assets/img/Fraud-Thumbnail.jpg",
-      "alt": "Fraud detection system"
+      "alt": "Fraud detection under label delay"
     },
     {
-      "title": "EquiSpeak: Real-time Sign Language Communication System",
-      "summary": "ASL-to-text with >90% accuracy across 25+ gestures at sub-200 ms latency. Extended to simple sentence structuring.",
-      "metric": ">90% accuracy, <200 ms latency",
-      "tags": [
-        "OpenCV",
-        "TensorFlow",
-        "Realtime"
+      "title": "Revisitation-Aware Video Segmentation",
+      "tagline": "Stops static surfaces from being double-counted when AV routes loop.",
+      "problem": "When autonomous-driving datasets revisit the same street, static surfaces get counted multiple times — inflating composition statistics that downstream planning relies on.",
+      "approach": {
+        "data": "Cityscapes plus custom revisit sequences.",
+        "models": "PSPNet semantic segmentation + temporal smoothing + per-pixel instance tracking + a semantics-driven revisitation detector.",
+        "why": "The bottleneck wasn't single-frame accuracy — it was temporal consistency. Cheaper to fix at the tracking layer than swap to a heavier transformer backbone."
+      },
+      "results": [
+        "mIoU +1.9",
+        "MOTA +15.3",
+        "ID switches −52%",
+        "Static overcount −50%"
       ],
+      "deployment": "Research code + paper preprint.",
+      "tags": ["PyTorch", "PSPNet", "Computer vision"],
       "links": [
-        {
-          "label": "Code",
-          "url": "https://github.com/Aashan47/Real-time-Sign-Language-Communication-System"
-        },
-        {
-          "label": "Demo",
-          "url": "https://drive.google.com/file/d/1MRwsnLi9eDq7DJlbpXgu5mSgO4V7sbtQ/view"
-        }
+        {"label": "Code", "url": "https://github.com/Aashan47/Video-Segmentation/tree/main"},
+        {"label": "Paper", "url": "https://doi.org/10.5281/zenodo.17218433"},
+        {"label": "Segmentation demo", "url": "https://www.youtube.com/watch?v=HwiyFk_XMjw"},
+        {"label": "Scene-detection demo", "url": "https://www.youtube.com/shorts/m0hQ2HnS5pw"}
       ],
-      "image": "assets/img/EquiSpeak-logo.jpg",
-      "alt": "EquiSpeak sign language system"
-    },
-    {
-      "title": "Wakeel: Smart Legal Paralegal & AI Assistant",
-      "summary": "NLP tool for clause extraction, summarization, and legal Q&A using spaCy and Transformers. RAG added for contextual grounding.",
-      "metric": "Review time ~35% faster, accuracy +21%",
-      "tags": [
-        "spaCy",
-        "Transformers",
-        "RAG",
-        "Flask"
-      ],
-      "links": [
-        {
-          "label": "Code",
-          "url": "https://github.com/Aashan47/Wakeel-Smart-Legal-Paralegal-AI-Assistant"
-        },
-        {
-          "label": "Demo",
-          "url": "https://youtu.be/JrrLWc9jvmY"
-        }
-      ],
-      "image": "assets/img/wakeel.jpg",
-      "alt": "Wakeel smart legal paralegal AI assistant interface"
+      "image": "assets/img/video-seg.png",
+      "alt": "Video segmentation with revisit detection"
     }
   ],
   "publications": [
@@ -266,14 +199,8 @@
       "summary": "Stabilizes Top-K alerts under label delay and drift using split-conformal guarantees.",
       "status": "Preprint",
       "links": [
-        {
-          "label": "Paper",
-          "url": "https://zenodo.org/records/17170373"
-        },
-        {
-          "label": "Code",
-          "url": "https://github.com/Aashan47/Budget-Aware-Fraud-Detection-with-Label-Delay"
-        }
+        {"label": "Paper", "url": "https://zenodo.org/records/17170373"},
+        {"label": "Code", "url": "https://github.com/Aashan47/Budget-Aware-Fraud-Detection-with-Label-Delay"}
       ]
     },
     {
@@ -282,163 +209,79 @@
       "summary": "10 m multi-modal climate monitoring using geospatial embeddings.",
       "status": "Preprint",
       "links": [
-        {
-          "label": "Paper",
-          "url": "https://zenodo.org/records/17171331"
-        },
-        {
-          "label": "Code",
-          "url": "https://github.com/Aashan47/Alpha-Earth---Climate-Monitoring-System"
-        }
+        {"label": "Paper", "url": "https://zenodo.org/records/17171331"},
+        {"label": "Code", "url": "https://github.com/Aashan47/Alpha-Earth---Climate-Monitoring-System"}
       ]
     },
     {
       "title": "Decoding Coarse Climate Variables to 10 m Using Geospatial Foundation Embeddings",
       "year": 2025,
-      "summary": "Downscales ERA5/ERA5-Land anomalies to 10 m using lightweight decoders on embeddings.",
+      "summary": "Downscales ERA5 / ERA5-Land anomalies to 10 m using lightweight decoders on embeddings.",
       "status": "Preprint",
       "links": [
-        {
-          "label": "Paper",
-          "url": "https://zenodo.org/records/17171318"
-        },
-        {
-          "label": "Code",
-          "url": "https://github.com/Aashan47/Decode-coarse-climate-anomalies"
-        }
+        {"label": "Paper", "url": "https://zenodo.org/records/17171318"},
+        {"label": "Code", "url": "https://github.com/Aashan47/Decode-coarse-climate-anomalies"}
       ]
     },
     {
       "title": "Preventing Static Element Double Counting in Urban Video Segmentation for Autonomous Driving",
       "year": 2025,
-      "summary": "Revisitation-aware framework that prevents static surfaces from being counted multiple times when routes loop or cars revisit views. Uses temporally smoothed per-pixel labels, pixel-level instance tracking, and a semantics-driven revisitation detector to improve route-level composition accuracy.",
+      "summary": "Revisitation-aware framework that prevents static surfaces from being counted multiple times when routes loop.",
       "status": "Preprint",
       "links": [
-        {
-          "label": "Paper",
-          "url": "https://doi.org/10.5281/zenodo.17218433"
-        },
-        {
-          "label": "Code",
-          "url": "https://github.com/Aashan47/Video-Segmentation"
-        }
+        {"label": "Paper", "url": "https://doi.org/10.5281/zenodo.17218433"},
+        {"label": "Code", "url": "https://github.com/Aashan47/Video-Segmentation"}
       ]
     }
   ],
   "experience": [
     {
-      "role": "Software Engineer (Machine Learning)",
+      "role": "Machine Learning Engineer",
       "place": "FortyGuard",
-      "type": "Full-time",
-      "location": "Abu Dhabi",
+      "location": "Abu Dhabi (Remote)",
       "from": "Jan 2025",
       "to": "Present",
       "bullets": [
-        "Built a 2 m-above-ground large temperature model at 10 m resolution.",
-        "Cut median inference time ~35% vs baseline, improved prediction accuracy ~18%.",
-        "Shipped models into dashboards for non-technical users."
+        "Architected a Spatiotemporal Large Temperature Model (Transformer + Diffusion) forecasting 2 m air temperature at 10 m spatial resolution across the contiguous United States (CONUS).",
+        "Led NVIDIA CorrDiff collaboration on diffusion-based downscaling — 25 km → 1 km atmospheric data (25× resolution improvement) for the San Jose region.",
+        "Improved real-time air-temperature prediction accuracy by 21% and built scalable scientific ML pipelines from data ingestion through training, deployment, and inference."
       ]
     },
     {
-      "role": "Software Engineer (Machine Learning), Internship",
+      "role": "Software Intern (Full-Stack ML)",
       "place": "FortyGuard",
-      "type": "Internship",
       "location": "Abu Dhabi",
-      "from": "May 2024",
+      "from": "Jun 2024",
       "to": "Dec 2024",
       "bullets": [
-        "Automated temperature data pipelines and tied frontend dashboards to ML APIs.",
-        "Improved analytics efficiency and response times with caching and query optimization."
+        "Built ML-enabled product features and backend services in Python + FastAPI, with Firebase and cloud-hosted workflows for enterprise geospatial applications.",
+        "Integrated reporting pipelines and analytics workflows used by internal and customer-facing teams; translated product requirements into ML-enabled solutions."
       ]
     },
     {
-      "role": "Machine Learning Engineer, Internship",
-      "place": "Payactiv SDS IT",
-      "type": "Internship",
-      "location": "Remote",
+      "role": "Machine Learning Engineer Intern",
+      "place": "Payactiv",
+      "location": "Islamabad",
       "from": "Jun 2023",
       "to": "Sep 2023",
       "bullets": [
-        "Built fraud anomaly detection that improved precision by ~22%.",
-        "Explored LLM-based risk scoring for internal analytics."
+        "Built and deployed production risk-scoring services in Python + XGBoost — fraud detection precision +22% on finance decision workflows.",
+        "Processed large transaction datasets with parsing pipelines that fed structured signals into automated risk reporting."
       ]
     }
   ],
   "skills": {
-    "Core ML": [
-      "Python",
-      "NumPy",
-      "Pandas",
-      "Scikit-learn",
-      "PyTorch",
-      "XGBoost"
-    ],
-    "Geospatial/Climate": [
-      "Google Earth Engine",
-      "Rasterio",
-      "GDAL",
-      "xarray",
-      "QGIS"
-    ],
-    "MLOps & Data": [
-      "Airflow",
-      "Docker",
-      "Kubernetes",
-      "FastAPI",
-      "Spark",
-      "Kafka",
-      "CI/CD"
-    ],
-    "Cloud": [
-      "AWS",
-      "Azure"
-    ],
-    "Databases": [
-      "SQL",
-      "NoSQL"
-    ],
-    "Languages": [
-      "English (IELTS 7.5)",
-      "Urdu",
-      "Punjabi",
-      "German (A2 in progress)"
-    ]
+    "GenAI & LLMs": ["LLM applications", "LLM fine-tuning", "Agentic workflows", "Multimodal AI", "RAG", "Embeddings", "CLIP", "LLM evaluation", "Prompt & retrieval optimization"],
+    "ML & Modeling": ["Python", "PyTorch", "TensorFlow", "XGBoost", "LightGBM", "LambdaMART", "Forecasting", "Ranking", "Recommendation", "Feature engineering"],
+    "Data & Infrastructure": ["SQL", "Postgres", "BigQuery", "Airflow", "Cloud Composer", "Data pipelines", "Model monitoring (Evidently)", "Data quality"],
+    "Cloud & Deployment": ["AWS", "GCP", "SageMaker", "Docker", "Kubernetes", "FastAPI", "CI/CD", "Linux"],
+    "Domain": ["Climate informatics", "Geospatial (Earth Engine, Rasterio, GDAL, xarray)", "Computer vision", "NLP", "Time-series"]
   },
-  "achievements": {
-    "verificationLink": "https://drive.google.com/drive/folders/1F93E9KE2YUgVkwdzY66PRBVakFLy7rVp?usp=drive_link",
-    "items": [
-      "Recipient - Rector's List of Honor",
-      "Recipient - Gold Medal for Outstanding Performance and 4.0 GPA in 7th Semester",
-      "Digital Volunteer - Alkhidmat Foundation Pakistan for Flood Relief Services in 2022 floods in Pakistan",
-      "Runner-up - ICC Hackathon (International Finalist, Cricket Analytics)",
-      "Campus Ambassador - Youth for Pakistan",
-      "Head of Information - FAST NUCES Community Service Society",
-      "Google Cloud Community Member - Workshops and Cloud Events"
-    ]
+  "education": {
+    "school": "National University of Computer and Emerging Sciences (FAST)",
+    "degree": "BS Computer Science — Gold Medalist",
+    "location": "Islamabad"
   },
-  "certifications": {
-    "verificationLink": "https://drive.google.com/drive/folders/1l3_D9sudvOBeAlmY4pgb79kmQ7D0Q7be?usp=drive_link",
-    "items": [
-      {
-        "name": "Machine Learning Specialization (Stanford Online)",
-        "link": "https://www.coursera.org/account/accomplishments/specialization/LFXZ8PXH4JGW?utm_source=link&utm_medium=certificate&utm_content=cert_image&utm_campaign=sharing_cta&utm_product=s1n"
-      },
-      {
-        "name": "IBM Data Science Specialization (IBM)",
-        "link": "https://www.coursera.org/account/accomplishments/specialization/8AS6VUNX6BFW"
-      },
-      {
-        "name": "Google Data Analytics (Google)",
-        "link": "https://www.coursera.org/account/accomplishments/specialization/certificate/VAB5L2ER92E5"
-      },
-      {
-        "name": "AWS Academy Graduate - AWS Academy Microservices and CI/CD Pipeline Builder",
-        "link": "https://www.credly.com/badges/7287dd67-7e90-42b3-a9be-ed33d2c82431/linked_in_profile"
-      },
-      {
-        "name": "Microsoft Azure Fundamentals (Microsoft)",
-        "link": "https://learn.microsoft.com/api/credentials/share/en-us/AashanJaved-7987/831A7403B7442E7A?sharingId=873776FDA2072D9E"
-      }
-    ]
-  }
+  "certifications_summary": "Stanford ML Specialization · IBM Data Science · Google Data Analytics · AWS Academy · Microsoft Azure Fundamentals",
+  "certifications_link": "https://drive.google.com/drive/folders/1l3_D9sudvOBeAlmY4pgb79kmQ7D0Q7be?usp=drive_link"
 }
