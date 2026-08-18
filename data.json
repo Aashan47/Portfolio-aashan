@@ -1,14 +1,14 @@
 {
   "meta": {
     "title": "Aashan Javed — ML Engineer",
-    "description": "ML engineer building production systems across climate, GenAI, and ranking. Currently shipping a Spatiotemporal Temperature Model at FortyGuard, in collaboration with NVIDIA.",
+    "description": "ML engineer building production systems across climate, GenAI, and ranking. At FortyGuard I built the Large Temperature Model and led an NVIDIA CorrDiff downscaling collaboration, and I am now building geospatial agents.",
     "canonical": "https://aashanjaved.com",
     "accent": "#0a0a0a"
   },
   "person": {
     "name": "Aashan Javed",
     "role": "ML Engineer — GenAI and production systems",
-    "tagline": "I build production ML end-to-end — pipelines, models, deployment, monitoring. Worked on and developed a Spatiotemporal Large Temperature Model at FortyGuard, in collaboration with NVIDIA.",
+    "tagline": "I build production ML end-to-end — pipelines, models, deployment, monitoring. At FortyGuard I developed the Large Temperature Model, led an NVIDIA CorrDiff downscaling collaboration, and am now building geospatial agents.",
     "email": "aashanjaved.cs@gmail.com",
     "linkedin": "https://www.linkedin.com/in/aashan-javed/",
     "github": "https://github.com/Aashan47"
@@ -242,8 +242,9 @@
       "from": "Jan 2025",
       "to": "Present",
       "bullets": [
-        "Architected a Spatiotemporal Large Temperature Model (Transformer + Diffusion) forecasting 2 m air temperature at 10 m spatial resolution across the contiguous United States (CONUS).",
-        "Led NVIDIA CorrDiff collaboration on diffusion-based downscaling — 25 km → 1 km atmospheric data (25× resolution improvement) for the San Jose region.",
+        "Architected the Large Temperature Model (LTM), a Transformer + Diffusion system forecasting street-level (2 m) air temperature at 10 m spatial resolution across the contiguous United States (CONUS).",
+        "Led an NVIDIA CorrDiff collaboration on diffusion-based downscaling — a 255× spatial amplification (16× finer per axis) taking a 25 km grid to roughly 1.5 km over the San Jose region.",
+        "Building FortyGuard's geospatial agents — LLM-driven agents that turn natural-language questions into geospatial climate and heat-exposure analysis.",
         "Improved real-time air-temperature prediction accuracy by 21% and built scalable scientific ML pipelines from data ingestion through training, deployment, and inference."
       ]
     },
