@@ -194,43 +194,33 @@
   ],
   "publications": [
     {
-      "title": "Budget-Aware Fraud Detection with Label Delay: Stable Top-K Decisioning with Conformal Guarantees",
-      "year": 2025,
-      "summary": "Stabilizes Top-K alerts under label delay and drift using split-conformal guarantees.",
+      "title": "A Frozen Foundation Model Is No Better Calibrated Than Six Spectral Indices: Auditing Urban Heat Maps Across Cities",
+      "year": 2026,
+      "summary": "Across four cities on three continents, a heat-map prediction interval advertised at 90% holds city-wide (0.888–0.901) yet its coverage across urban zones spans 0.736–0.978, and falls to 0.105 when a model calibrated in one city is applied to another. A frozen Clay v1.5 embedding is no better calibrated under that transfer than six hand-built spectral indices.",
       "status": "Preprint",
       "links": [
-        {"label": "Paper", "url": "https://zenodo.org/records/17170373"},
-        {"label": "Code", "url": "https://github.com/Aashan47/Budget-Aware-Fraud-Detection-with-Label-Delay"}
+        {"label": "Paper", "url": "https://doi.org/10.5281/zenodo.21853486"},
+        {"label": "Code", "url": "https://github.com/Aashan47/urban-heat-coverage"}
       ]
     },
     {
-      "title": "AlphaEarth Climate Monitoring System: High-Resolution Climate Monitoring with Foundation Models",
-      "year": 2025,
-      "summary": "10 m multi-modal climate monitoring using geospatial embeddings.",
+      "title": "Calibrated Station-Scale Temperature Downscaling from a Temperature-Agnostic Geospatial Foundation Model",
+      "year": 2026,
+      "summary": "Frozen, temperature-agnostic Clay v1.5 embeddings cut station-scale temperature-anomaly RMSE by 38–68% over the coarse ERA5-Land baseline across three regimes (arid Arizona, temperate Pacific Northwest, boreal Scandinavia). An ablation shows the embedding adds independent, leakage-free skill, and conformal intervals expose a coverage collapse under cross-regime transfer.",
       "status": "Preprint",
       "links": [
-        {"label": "Paper", "url": "https://zenodo.org/records/17171331"},
-        {"label": "Code", "url": "https://github.com/Aashan47/Alpha-Earth---Climate-Monitoring-System"}
+        {"label": "Paper", "url": "https://doi.org/10.5281/zenodo.21849728"},
+        {"label": "Code", "url": "https://github.com/Aashan47/climate-downscaling-conformal"}
       ]
     },
     {
-      "title": "Decoding Coarse Climate Variables to 10 m Using Geospatial Foundation Embeddings",
-      "year": 2025,
-      "summary": "Downscales ERA5 / ERA5-Land anomalies to 10 m using lightweight decoders on embeddings.",
+      "title": "When Does a Frozen Time-Series Foundation Model's Uncertainty Fail, and What Actually Fixes It?",
+      "year": 2026,
+      "summary": "The native quantile intervals of frozen time-series foundation models (Chronos-Bolt, Chronos-T5) are well-calibrated in-distribution, but their empirical coverage collapses monotonically under distribution shift — driven by regime shift, not forecast horizon — and no static post-hoc conformal wrapper repairs the conditional under-coverage.",
       "status": "Preprint",
       "links": [
-        {"label": "Paper", "url": "https://zenodo.org/records/17171318"},
-        {"label": "Code", "url": "https://github.com/Aashan47/Decode-coarse-climate-anomalies"}
-      ]
-    },
-    {
-      "title": "Preventing Static Element Double Counting in Urban Video Segmentation for Autonomous Driving",
-      "year": 2025,
-      "summary": "Revisitation-aware framework that prevents static surfaces from being counted multiple times when routes loop.",
-      "status": "Preprint",
-      "links": [
-        {"label": "Paper", "url": "https://doi.org/10.5281/zenodo.17218433"},
-        {"label": "Code", "url": "https://github.com/Aashan47/Video-Segmentation"}
+        {"label": "Paper", "url": "https://doi.org/10.5281/zenodo.21848966"},
+        {"label": "Code", "url": "https://github.com/Aashan47/tsfm-uncertainty"}
       ]
     }
   ],
@@ -280,7 +270,7 @@
   },
   "education": {
     "school": "National University of Computer and Emerging Sciences (FAST)",
-    "degree": "BS Computer Science — Gold Medalist",
+    "degree": "BS Computer Science — Gold Medalist and Rector's List of Honors (7th semester); graduated 57/285 (top 20%)",
     "location": "Islamabad"
   },
   "certifications_summary": "Stanford ML Specialization · IBM Data Science · Google Data Analytics · AWS Academy · Microsoft Azure Fundamentals",
