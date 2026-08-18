@@ -1,14 +1,14 @@
 {
   "meta": {
-    "title": "Aashan Javed — ML Engineer",
+    "title": "Aashan Javed, ML Engineer",
     "description": "ML engineer building production systems across climate, GenAI, and ranking. At FortyGuard I built the Large Temperature Model and led an NVIDIA CorrDiff downscaling collaboration, and now build working geospatial AI agents.",
     "canonical": "https://aashanjaved.com",
     "accent": "#0a0a0a"
   },
   "person": {
     "name": "Aashan Javed",
-    "role": "ML Engineer — GenAI and production systems",
-    "tagline": "I build production ML end-to-end — pipelines, models, deployment, monitoring. At FortyGuard I developed the Large Temperature Model, led an NVIDIA CorrDiff downscaling collaboration, building geospatial AI agents.",
+    "role": "ML Engineer, GenAI and production systems",
+    "tagline": "I build production ML end-to-end: pipelines, models, deployment, monitoring. At FortyGuard I developed the Large Temperature Model, led an NVIDIA CorrDiff downscaling collaboration, building geospatial AI agents.",
     "email": "aashanjaved.cs@gmail.com",
     "linkedin": "https://www.linkedin.com/in/aashan-javed/",
     "github": "https://github.com/Aashan47"
@@ -16,11 +16,11 @@
   "how_i_think": [
     {
       "heading": "Start with the simplest model that could work.",
-      "body": "A logistic regression that ships beats a transformer that doesn't. Most 'model' problems turn out to be data problems — better features, cleaner labels, or being honest about what the data can't tell you. I reach for deep models when the simpler one has clearly plateaued, not before."
+      "body": "A logistic regression that ships beats a transformer that doesn't. Most 'model' problems turn out to be data problems: better features, cleaner labels, or being honest about what the data can't tell you. I reach for deep models when the simpler one has clearly plateaued, not before."
     },
     {
       "heading": "A number without context isn't a result.",
-      "body": "'+9% NDCG@5' only matters if I can tell you what baseline I'm beating, what split it's measured on, and what it would cost to be wrong. I try to write that down before I start training, not after — and I separate randomized-impression evaluation from logged-click evaluation, because position bias will quietly inflate everything otherwise."
+      "body": "'+9% NDCG@5' only matters if I can tell you what baseline I'm beating, what split it's measured on, and what it would cost to be wrong. I try to write that down before I start training, not after, and I separate randomized-impression evaluation from logged-click evaluation, because position bias will quietly inflate everything otherwise."
     },
     {
       "heading": "The hard part is rarely the model.",
@@ -29,9 +29,9 @@
   ],
   "projects": [
     {
-      "title": "Beijing Air-Quality Forecasting — MLOps Pipeline",
+      "title": "Beijing Air-Quality Forecasting: MLOps Pipeline",
       "tagline": "Drift-aware PM2.5 forecaster on a 9-point Beijing grid. Airflow + SageMaker + Evidently, end-to-end.",
-      "problem": "Most air-quality forecasting demos are static notebooks. The real problem is keeping a model fresh under drift — sensors fail, seasons shift, traffic patterns change — without manual retraining every week.",
+      "problem": "Most air-quality forecasting demos are static notebooks. The real problem is keeping a model fresh under drift (sensors fail, seasons shift, traffic patterns change) without manual retraining every week.",
       "approach": {
         "data": "Open-Meteo PM2.5 + weather across a 9-point grid over Beijing (39.75–40.05°N, 116.15–116.65°E); ~18,500 historical rows.",
         "models": "XGBoost regressor (200 rounds, max_depth=6) with rush-hour, hour-of-day, and PM2.5 lag/rolling features. Recursive multi-step forecast for 1 h to 7 d horizons.",
@@ -54,11 +54,11 @@
     {
       "title": "Production Learning-to-Rank for Hotel Search",
       "tagline": "LambdaMART + inverse propensity scoring on 9.9M Expedia rows. Beats the baseline ranker on every metric.",
-      "problem": "Hotel search ranking is fundamentally listwise — relevance is relative within each result set. And training on logged clicks just teaches the model to mimic the existing ranker, because position bias dominates the label signal.",
+      "problem": "Hotel search ranking is fundamentally listwise: relevance is relative within each result set. And training on logged clicks just teaches the model to mimic the existing ranker, because position bias dominates the label signal.",
       "approach": {
-        "data": "Expedia search data — 9.9M rows across 400K+ queries, of which 18,105 are randomized-impression queries that give unbiased ground truth.",
+        "data": "Expedia search data: 9.9M rows across 400K+ queries, of which 18,105 are randomized-impression queries that give unbiased ground truth.",
         "models": "LightGBM LambdaMART over ~40 features (raw properties, match signals, Bayesian-smoothed historical engagement). Inverse Propensity Scoring with a power-law position-bias model: P(pos) = α · pos^(−β); reweight clicks by 1 / P(examine | position), capped at the 75th percentile.",
-        "why": "LambdaMART optimizes NDCG across full lists, matching the listwise objective. IPS is the cheapest credible answer to position bias — and it's measurable, because the randomization queries give a proper unbiased test set."
+        "why": "LambdaMART optimizes NDCG across full lists, matching the listwise objective. IPS is the cheapest credible answer to position bias, and it's measurable, because the randomization queries give a proper unbiased test set."
       },
       "results": [
         "NDCG@5 +9.5% (0.2913 → 0.3189)",
@@ -73,13 +73,13 @@
       ]
     },
     {
-      "title": "Visual Research Assistant — Multimodal Agentic RAG",
+      "title": "Visual Research Assistant: Multimodal Agentic RAG",
       "tagline": "Local-first agentic RAG over PDFs (text + tables + figures) with hallucination-aware retry.",
-      "problem": "Most 'chatbot over PDF' tools fall apart on real research papers — they ignore figures and tables, hallucinate citations, and lock you into cloud APIs. I wanted a multimodal agent that reasons over text, tables, and figures, runs locally on consumer GPUs, and tells you when it's wrong.",
+      "problem": "Most 'chatbot over PDF' tools fall apart on real research papers: they ignore figures and tables, hallucinate citations, and lock you into cloud APIs. I wanted a multimodal agent that reasons over text, tables, and figures, runs locally on consumer GPUs, and tells you when it's wrong.",
       "approach": {
         "data": "Multi-page PDFs partitioned into text blocks, tables (preserved as HTML), and rasterized figures. Optional user-uploaded images for cross-modal queries.",
-        "models": "LangGraph state machine over five nodes — Router → Retriever → Generator → Critic → Finalize. Generator selects llava:7b for vision queries, llama3.2:1b for text. Critic is a separate model family with Pydantic-structured output for hallucination detection. ChromaDB + nomic-embed-text for retrieval.",
-        "why": "Cross-family critic so the judge isn't biased toward the generator's mistakes. Multi-vector retrieval (embed summaries, return originals) so semantic search doesn't truncate context. Retry only on hallucination — everything else surfaces on the first pass to keep latency honest."
+        "models": "LangGraph state machine over five nodes: Router → Retriever → Generator → Critic → Finalize. Generator selects llava:7b for vision queries, llama3.2:1b for text. Critic is a separate model family with Pydantic-structured output for hallucination detection. ChromaDB + nomic-embed-text for retrieval.",
+        "why": "Cross-family critic so the judge isn't biased toward the generator's mistakes. Multi-vector retrieval (embed summaries, return originals) so semantic search doesn't truncate context. Retry only on hallucination; everything else surfaces on the first pass to keep latency honest."
       },
       "results": [
         "10-page PDF ingestion: 3–5 s",
@@ -99,11 +99,11 @@
     {
       "title": "AlphaEarth Climate Monitoring",
       "tagline": "10 m climate insights from coarse inputs using geospatial foundation embeddings.",
-      "problem": "Climate datasets like ERA5 are ≥1 km — too coarse to capture the neighborhood-scale heat, vegetation stress, or change patterns that real decisions depend on.",
+      "problem": "Climate datasets like ERA5 are ≥1 km, too coarse to capture the neighborhood-scale heat, vegetation stress, or change patterns that real decisions depend on.",
       "approach": {
         "data": "Sentinel-2 + ERA5 / ERA5-Land via Google Earth Engine.",
         "models": "Geospatial foundation embeddings + lightweight decoders for temperature prediction, similarity search, and change detection.",
-        "why": "One pretrained backbone serves multiple downstream tasks instead of training each from scratch — critical when imagery is multi-modal and labels are thin."
+        "why": "One pretrained backbone serves multiple downstream tasks instead of training each from scratch, critical when imagery is multi-modal and labels are thin."
       },
       "results": [
         "Output resolution: 10 m from ≥1 km inputs",
@@ -122,11 +122,11 @@
     {
       "title": "Urban Data-Center Siting",
       "tagline": "Multi-factor risk scoring for data center site selection using NASA EO data.",
-      "problem": "Data center siting is a multi-factor decision (climate risk, water, power, demographics) usually done in spreadsheets and consultancy reports — slow, opaque, hard to defend.",
+      "problem": "Data center siting is a multi-factor decision (climate risk, water, power, demographics) usually done in spreadsheets and consultancy reports: slow, opaque, hard to defend.",
       "approach": {
         "data": "NASA Earth Observation, OpenStreetMap, demographic and infrastructure layers.",
         "models": "Composite scoring with multi-factor risk weighting, surfaced through an interactive comparison map.",
-        "why": "Decision-support tooling — interpretable scoring beats a black-box ranker when stakeholders need to defend the choice to legal and finance."
+        "why": "Decision-support tooling: interpretable scoring beats a black-box ranker when stakeholders need to defend the choice to legal and finance."
       },
       "results": [
         "Multi-site comparison with real-time environmental analysis",
@@ -144,12 +144,12 @@
     },
     {
       "title": "Budget-Aware Fraud Detection",
-      "tagline": "Stable Top-K alerts under label delay using split-conformal guarantees — 94% precision held at 2-week label lag.",
-      "problem": "In production fraud, labels arrive days late and drift constantly. Most academic models assume labels exist now — so their alert lists thrash, and analysts lose trust.",
+      "tagline": "Stable Top-K alerts under label delay using split-conformal guarantees: 94% precision held at 2-week label lag.",
+      "problem": "In production fraud, labels arrive days late and drift constantly. Most academic models assume labels exist now, so their alert lists thrash, and analysts lose trust.",
       "approach": {
         "data": "Streaming fraud benchmarks with simulated label delay (14-day default) and concept drift; investigation budget of 500 transactions per period.",
         "models": "Calibrated Top-K decisioning with split-conformal coverage guarantees on top of an underlying classifier; 5-fold cross-validation.",
-        "why": "Conformal because it gives finite-sample guarantees without assuming the underlying classifier is calibrated — useful when the score distribution drifts."
+        "why": "Conformal because it gives finite-sample guarantees without assuming the underlying classifier is calibrated, useful when the score distribution drifts."
       },
       "results": [
         "94% precision maintained under 2-week label delays",
@@ -168,11 +168,11 @@
     {
       "title": "Revisitation-Aware Video Segmentation",
       "tagline": "Stops static surfaces from being double-counted when AV routes loop.",
-      "problem": "When autonomous-driving datasets revisit the same street, static surfaces get counted multiple times — inflating composition statistics that downstream planning relies on.",
+      "problem": "When autonomous-driving datasets revisit the same street, static surfaces get counted multiple times, inflating composition statistics that downstream planning relies on.",
       "approach": {
         "data": "Cityscapes plus custom revisit sequences.",
         "models": "PSPNet semantic segmentation + temporal smoothing + per-pixel instance tracking + a semantics-driven revisitation detector.",
-        "why": "The bottleneck wasn't single-frame accuracy — it was temporal consistency. Cheaper to fix at the tracking layer than swap to a heavier transformer backbone."
+        "why": "The bottleneck wasn't single-frame accuracy; it was temporal consistency. Cheaper to fix at the tracking layer than swap to a heavier transformer backbone."
       },
       "results": [
         "mIoU +1.9",
@@ -216,7 +216,7 @@
     {
       "title": "When Does a Frozen Time-Series Foundation Model's Uncertainty Fail, and What Actually Fixes It?",
       "year": 2026,
-      "summary": "The native quantile intervals of frozen time-series foundation models (Chronos-Bolt, Chronos-T5) are well-calibrated in-distribution, but their empirical coverage collapses monotonically under distribution shift — driven by regime shift, not forecast horizon — and no static post-hoc conformal wrapper repairs the conditional under-coverage.",
+      "summary": "The native quantile intervals of frozen time-series foundation models (Chronos-Bolt, Chronos-T5) are well-calibrated in-distribution, but their empirical coverage collapses monotonically under distribution shift (driven by regime shift, not forecast horizon), and no static post-hoc conformal wrapper repairs the conditional under-coverage.",
       "status": "Preprint",
       "links": [
         {"label": "Paper", "url": "https://doi.org/10.5281/zenodo.21848966"},
@@ -233,8 +233,8 @@
       "to": "Present",
       "bullets": [
         "Architected the Large Temperature Model (LTM), a Transformer + Diffusion system forecasting street-level (2 m) air temperature at 10 m spatial resolution across the contiguous United States (CONUS).",
-        "Led an NVIDIA CorrDiff collaboration on diffusion-based downscaling — a 255× spatial amplification (16× finer per axis) taking a 25 km grid to roughly 1.5 km over the San Jose region.",
-        "Building FortyGuard's geospatial AI agents — working, LLM-driven agents that turn natural-language questions into geospatial climate and heat-exposure analysis.",
+        "Led an NVIDIA CorrDiff collaboration on diffusion-based downscaling: a 255× spatial amplification (16× finer per axis) taking a 25 km grid to roughly 1.5 km over the San Jose region.",
+        "Building FortyGuard's geospatial AI agents: working, LLM-driven agents that turn natural-language questions into geospatial climate and heat-exposure analysis.",
         "Improved real-time air-temperature prediction accuracy by 21% and built scalable scientific ML pipelines from data ingestion through training, deployment, and inference."
       ]
     },
@@ -256,7 +256,7 @@
       "from": "Jun 2023",
       "to": "Sep 2023",
       "bullets": [
-        "Built and deployed production risk-scoring services in Python + XGBoost — fraud detection precision +22% on finance decision workflows.",
+        "Built and deployed production risk-scoring services in Python + XGBoost, lifting fraud detection precision +22% on finance decision workflows.",
         "Processed large transaction datasets with parsing pipelines that fed structured signals into automated risk reporting."
       ]
     }
@@ -270,7 +270,7 @@
   },
   "education": {
     "school": "National University of Computer and Emerging Sciences (FAST)",
-    "degree": "BS Computer Science — Gold Medalist and Rector's List of Honors (7th semester); graduated 57/285 (top 20%)",
+    "degree": "BS Computer Science: Gold Medalist and Rector's List of Honors (7th semester); graduated 57/285 (top 20%)",
     "location": "Islamabad"
   },
   "certifications_summary": "Stanford ML Specialization · IBM Data Science · Google Data Analytics · AWS Academy · Microsoft Azure Fundamentals",

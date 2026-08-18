@@ -140,7 +140,7 @@ function renderExperience(data){
     const bullets = xp.bullets.map(b => `<li>${safe(b)}</li>`).join("");
     tl.appendChild(el(`
       <div class="tl-item">
-        <div class="tl-meta">${safe(xp.from)} — ${safe(xp.to)}<br/>${safe(xp.location)}</div>
+        <div class="tl-meta">${safe(xp.from)} to ${safe(xp.to)}<br/>${safe(xp.location)}</div>
         <div>
           <h3 class="tl-role">${safe(xp.role)}</h3>
           <p class="tl-place">${safe(xp.place)}</p>
@@ -189,7 +189,7 @@ function renderSkills(data){
   const certLine = document.getElementById("certLine");
   if (data.certifications_summary && certLine) {
     const link = data.certifications_link
-      ? ` — <a href="${safe(data.certifications_link)}" target="_blank" rel="noopener">verification folder ↗</a>`
+      ? ` · <a href="${safe(data.certifications_link)}" target="_blank" rel="noopener">verification folder ↗</a>`
       : "";
     certLine.innerHTML = `<strong>Certifications</strong> ${safe(data.certifications_summary)}${link}`;
   }
