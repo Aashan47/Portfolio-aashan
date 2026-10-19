@@ -1,14 +1,14 @@
 {
   "meta": {
     "title": "Aashan Javed, AI Engineer",
-    "description": "AI engineer building agents that run unattended in production, with a focus on evals, guardrails and observability. At FortyGuard I build geospatial multi-agent systems and the Large Temperature Model, and led an NVIDIA CorrDiff downscaling collaboration.",
+    "description": "AI engineer building agents and machine learning systems that hold up in production, with a focus on reliability: evals, guardrails, calibrated uncertainty and observability.",
     "canonical": "https://aashanjaved.com",
     "accent": "#0a0a0a"
   },
   "person": {
     "name": "Aashan Javed",
     "role": "AI Engineer, reliable agents in production",
-    "tagline": "I build AI agents and the machinery that makes them safe to leave running: evals, guardrails, observability, and a hand-off to a human when the agent isn't sure. At FortyGuard I build geospatial multi-agent systems and the Large Temperature Model, and led an NVIDIA CorrDiff downscaling collaboration.",
+    "tagline": "I build AI agents and machine learning systems that hold up in production, from data and models through evaluation, deployment and monitoring. My focus is reliability: agents that know when they're unsure, evals that predict real-world behaviour, and guardrails built in from the start. I enjoy finding exactly where a system breaks and engineering it until it can run on its own.",
     "email": "aashanjaved.cs@gmail.com",
     "linkedin": "https://www.linkedin.com/in/aashan-javed/",
     "github": "https://github.com/Aashan47"
