@@ -12,6 +12,9 @@ async function init(){
   renderContact(data);
   buildJSONLD(data);
   setupActiveNav();
+  const header = document.querySelector(".header");
+  const onScroll = () => header.classList.toggle("scrolled", window.scrollY > 8);
+  window.addEventListener("scroll", onScroll, { passive: true }); onScroll();
 }
 
 const safe = v => String(v ?? "");
@@ -62,59 +65,36 @@ function renderHero(data){
 
 function renderProjects(data){
   const container = document.getElementById("projectList");
-  data.projects.forEach(p => {
+  data.projects.forEach((p, i) => {
     const linksHtml = (p.links || []).map(l =>
-      `<a href="${safe(l.url)}" target="_blank" rel="noopener">${safe(l.label)} ↗</a>`
+      `<a href="${safe(l.url)}" target="_blank" rel="noopener">${safe(l.label)}</a>`
     ).join("");
-
-    const resultsHtml = Array.isArray(p.results)
-      ? `<ul>${p.results.map(r => `<li>${safe(r)}</li>`).join("")}</ul>`
-      : `<p>${safe(p.results)}</p>`;
-
+    const results = Array.isArray(p.results) ? p.results : (p.results ? [p.results] : []);
+    const resultsHtml = results.length
+      ? `<ul class="results">${results.map(r => `<li>${safe(r)}</li>`).join("")}</ul>` : "";
     const tagsHtml = (p.tags || []).map(t => `<span class="chip">${safe(t)}</span>`).join("");
-
-    const approachHtml = p.approach ? `
-      <div class="project-block">
-        <span class="label">Approach</span>
-        ${p.approach.data ? `<p><strong>Data:</strong> ${safe(p.approach.data)}</p>` : ""}
-        ${p.approach.models ? `<p><strong>Models:</strong> ${safe(p.approach.models)}</p>` : ""}
-        ${p.approach.why ? `<p class="why"><strong>Why:</strong> ${safe(p.approach.why)}</p>` : ""}
-      </div>
-    ` : "";
-
+    const a = p.approach || {};
+    const blocks = [
+      p.problem ? `<div class="project-block"><span class="label">Problem</span><p>${safe(p.problem)}</p></div>` : "",
+      (a.data || a.models || a.why) ? `<div class="project-block"><span class="label">Approach</span>
+        ${a.data ? `<p><strong>Data.</strong> ${safe(a.data)}</p>` : ""}
+        ${a.models ? `<p><strong>Method.</strong> ${safe(a.models)}</p>` : ""}
+        ${a.why ? `<p><strong>Why.</strong> ${safe(a.why)}</p>` : ""}</div>` : "",
+      p.deployment ? `<div class="project-block"><span class="label">Deployment</span><p>${safe(p.deployment)}</p></div>` : ""
+    ].join("");
+    const featured = i === 0;
     const article = el(`
-      <article class="project">
+      <article class="project${featured ? " featured" : ""}${p.image ? " has-media" : ""}">
         <div class="project-body">
+          <p class="project-index">${featured ? "Featured" : String(i + 1).padStart(2, "0")}</p>
           <h3 class="project-title">${safe(p.title)}</h3>
           <p class="project-tagline">${safe(p.tagline)}</p>
-
-          ${p.problem ? `
-          <div class="project-block">
-            <span class="label">Problem</span>
-            <p>${safe(p.problem)}</p>
-          </div>` : ""}
-
-          ${approachHtml}
-
-          ${p.results ? `
-          <div class="project-block">
-            <span class="label">Results</span>
-            ${resultsHtml}
-          </div>` : ""}
-
-          ${p.deployment ? `
-          <div class="project-block">
-            <span class="label">Deployment</span>
-            <p>${safe(p.deployment)}</p>
-          </div>` : ""}
-
+          ${resultsHtml}
           ${tagsHtml ? `<div class="project-tags">${tagsHtml}</div>` : ""}
           ${linksHtml ? `<div class="project-links">${linksHtml}</div>` : ""}
+          ${blocks ? `<details class="project-details"><summary>How it works</summary>${blocks}</details>` : ""}
         </div>
-        ${p.image ? `
-        <div class="project-media">
-          <img src="${safe(p.image)}" alt="${safe(p.alt)}" loading="lazy"/>
-        </div>` : ""}
+        ${p.image ? `<div class="project-media"><img src="${safe(p.image)}" alt="${safe(p.alt)}" loading="${featured ? "eager" : "lazy"}"/></div>` : ""}
       </article>
     `);
     container.appendChild(article);
@@ -155,14 +135,14 @@ function renderPublications(data){
   const list = document.getElementById("pubList");
   data.publications.forEach(pub => {
     const links = (pub.links || []).map(l =>
-      `<a href="${safe(l.url)}" target="_blank" rel="noopener">${safe(l.label)} ↗</a>`
+      `<a href="${safe(l.url)}" target="_blank" rel="noopener">${safe(l.label)}</a>`
     ).join("");
     list.appendChild(el(`
       <li>
+        <p class="pub-meta">${safe(pub.status)} · ${safe(pub.year)}</p>
         <p class="pub-title">${safe(pub.title)}</p>
-        <p class="pub-meta">${safe(pub.year)} · ${safe(pub.status)}</p>
         <p class="pub-summary">${safe(pub.summary)}</p>
-        <div class="pub-links">${links}</div>
+        ${links ? `<div class="pub-links">${links}</div>` : ""}
       </li>
     `));
   });
@@ -189,7 +169,7 @@ function renderSkills(data){
   const certLine = document.getElementById("certLine");
   if (data.certifications_summary && certLine) {
     const link = data.certifications_link
-      ? ` · <a href="${safe(data.certifications_link)}" target="_blank" rel="noopener">verification folder ↗</a>`
+      ? ` · <a href="${safe(data.certifications_link)}" target="_blank" rel="noopener">verification folder</a>`
       : "";
     certLine.innerHTML = `<strong>Certifications</strong> ${safe(data.certifications_summary)}${link}`;
   }

@@ -34,7 +34,7 @@
   "projects": [
     {
       "title": "helpdesk-agent: a Support Agent That Knows When to Escalate",
-      "tagline": "Replies only from the help centre, cites the article, and hands the ticket to a human with a note when it can't. 0% wrong replies on uncovered tickets, against 100% for a plain chatbot.",
+      "tagline": "Replies only from the help centre, cites the article, and hands the ticket to a human with a note when it can't.",
       "problem": "A chatbot with the help centre pasted in answers every ticket. On the tickets the help centre doesn't cover, it confidently invents policy: discounts, refunds, integrations that don't exist. In support, one invented policy costs more than ten escalations.",
       "approach": {
         "data": "A 30-article help centre for a fictional SaaS company and 68 labelled tickets: 46 answerable, with a gold answer and article, and 22 plausible tickets it does not cover. 27 tickets calibrate the threshold; 41 held-out tickets report the numbers.",

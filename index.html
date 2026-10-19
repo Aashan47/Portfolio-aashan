@@ -11,9 +11,11 @@
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="https://aashanjaved.com"/>
   <meta name="twitter:card" content="summary"/>
+  <meta name="theme-color" content="#faf9f5"/>
+  <meta name="color-scheme" content="light"/>
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css"/>
 </head>
 <body>
@@ -29,7 +31,7 @@
         <li><a href="#publications" data-section="publications">Research</a></li>
         <li><a href="#skills" data-section="skills">Skills</a></li>
         <li><a href="#contact" data-section="contact">Contact</a></li>
-        <li><a href="/cv/aashan-javed-cv.pdf">CV</a></li>
+        <li><a class="cv" href="/cv/aashan-javed-cv.pdf">CV</a></li>
       </ul>
     </div>
   </header>
@@ -53,7 +55,7 @@
     <div class="container">
       <header>
         <p class="eyebrow">Selected work</p>
-        <h2>Projects</h2>
+        <h2>Things I've built</h2>
       </header>
       <div id="projectList" class="project-list"></div>
     </div>
@@ -62,8 +64,8 @@
   <section id="approach" class="section">
     <div class="container narrow">
       <header>
-        <p class="eyebrow">How I think</p>
-        <h2>Approach</h2>
+        <p class="eyebrow">Approach</p>
+        <h2>How I think about it</h2>
       </header>
       <div id="approachList" class="approach-list"></div>
     </div>
@@ -92,8 +94,8 @@
   <section id="skills" class="section">
     <div class="container">
       <header>
-        <p class="eyebrow">Stack</p>
-        <h2>Skills</h2>
+        <p class="eyebrow">Skills</p>
+        <h2>What I work with</h2>
       </header>
       <div id="skillGrid" class="skill-grid"></div>
       <p class="cert-line" id="eduLine"></p>
@@ -103,22 +105,22 @@
 
   <section id="contact" class="section contact-section">
     <div class="container narrow">
-      <header>
-        <p class="eyebrow">Contact</p>
+      <div class="contact-card">
         <h2>Let's talk</h2>
-      </header>
-      <p>Best way to reach me is email: <a id="emailLink" href="#"><span id="emailText"></span></a>. I read everything.</p>
-      <p class="contact-links">
-        <a id="footerLinkedin" target="_blank" rel="noopener">LinkedIn</a>
-        <span class="sep">·</span>
-        <a id="footerGithub" target="_blank" rel="noopener">GitHub</a>
-      </p>
+        <p>The best way to reach me is email: <a id="emailLink" href="#"><span id="emailText"></span></a>. I read everything.</p>
+        <div class="hero-actions">
+          <a id="footerLinkedin" class="btn" target="_blank" rel="noopener">LinkedIn</a>
+          <a id="footerGithub" class="btn" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn" href="/cv/aashan-javed-cv.pdf">CV</a>
+        </div>
+      </div>
     </div>
   </section>
 
   <footer>
     <div class="container muted small">
       <span>&copy; <span id="year"></span> Aashan Javed</span>
+      <a href="#home">Back to top</a>
     </div>
   </footer>
 
