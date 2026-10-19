@@ -1,19 +1,23 @@
 {
   "meta": {
-    "title": "Aashan Javed, ML Engineer",
-    "description": "ML engineer building production systems across climate, GenAI, and ranking. At FortyGuard I built the Large Temperature Model and led an NVIDIA CorrDiff downscaling collaboration, and now build working geospatial AI agents.",
+    "title": "Aashan Javed, AI Engineer",
+    "description": "AI engineer building agents that run unattended in production, with a focus on evals, guardrails and observability. At FortyGuard I build geospatial multi-agent systems and the Large Temperature Model, and led an NVIDIA CorrDiff downscaling collaboration.",
     "canonical": "https://aashanjaved.com",
     "accent": "#0a0a0a"
   },
   "person": {
     "name": "Aashan Javed",
-    "role": "ML Engineer, GenAI and production systems",
-    "tagline": "I build production ML end-to-end: pipelines, models, deployment, monitoring. At FortyGuard I developed the Large Temperature Model, led an NVIDIA CorrDiff downscaling collaboration, building geospatial AI agents.",
+    "role": "AI Engineer, reliable agents in production",
+    "tagline": "I build AI agents and the machinery that makes them safe to leave running: evals, guardrails, observability, and a hand-off to a human when the agent isn't sure. At FortyGuard I build geospatial multi-agent systems and the Large Temperature Model, and led an NVIDIA CorrDiff downscaling collaboration.",
     "email": "aashanjaved.cs@gmail.com",
     "linkedin": "https://www.linkedin.com/in/aashan-javed/",
     "github": "https://github.com/Aashan47"
   },
   "how_i_think": [
+    {
+      "heading": "Decide what the agent does when it's unsure before what it does when it's sure.",
+      "body": "A support agent that answers every ticket will invent a refund policy for the tickets the help centre doesn't cover. So I give agents an explicit way out: escalate with a hand-off note, at a threshold calibrated on labelled cases for an error rate I chose up front. A failed model call is reported as an outage. Then I build the evals from the failures I actually find in the traces."
+    },
     {
       "heading": "Start with the simplest model that could work.",
       "body": "A logistic regression that ships beats a transformer that doesn't. Most 'model' problems turn out to be data problems: better features, cleaner labels, or being honest about what the data can't tell you. I reach for deep models when the simpler one has clearly plateaued, not before."
@@ -28,6 +32,54 @@
     }
   ],
   "projects": [
+    {
+      "title": "helpdesk-agent: a Support Agent That Knows When to Escalate",
+      "tagline": "Replies only from the help centre, cites the article, and hands the ticket to a human with a note when it can't. 0% wrong replies on uncovered tickets, against 100% for a plain chatbot.",
+      "problem": "A chatbot with the help centre pasted in answers every ticket. On the tickets the help centre doesn't cover, it confidently invents policy: discounts, refunds, integrations that don't exist. In support, one invented policy costs more than ten escalations.",
+      "approach": {
+        "data": "A 30-article help centre for a fictional SaaS company and 68 labelled tickets: 46 answerable, with a gold answer and article, and 22 plausible tickets it does not cover. 27 tickets calibrate the threshold; 41 held-out tickets report the numbers.",
+        "models": "A bounded agent loop over a search tool: retrieve, then decide whether there is enough to reply, whether to search again with a reworded query, or whether to stop. It drafts several replies and uses their agreement as confidence. Split-conformal selective prediction sets the escalation threshold for a 10% error target, and output guards block any reply without a citation or whose key fact isn't in the cited article.",
+        "why": "Agreement across samples is a better confidence signal than the model's self-reported number, and a calibrated threshold turns 'how often may it be wrong' into a number I set."
+      },
+      "results": [
+        "Wrong replies on uncovered tickets: 0%, against 100% for a chatbot on the same model",
+        "Accuracy of the replies it sends: 96.4% (95% CI 88 to 100)",
+        "68.3% of tickets auto-resolved; the rest escalated with a hand-off note",
+        "Selective error 3.6% against a 10% target, on 41 held-out tickets"
+      ],
+      "deployment": "Zero-dependency Python service on Render. The console shows a live ticket inbox with the agent's steps streaming as it works, a human queue for escalations, and an editable help centre that re-indexes on save. Rate limits, input guards, 62 tests and CI on every push.",
+      "tags": ["AI agents", "Evals", "Conformal prediction", "Guardrails", "Human-in-the-loop", "Python"],
+      "links": [
+        {"label": "Live demo", "url": "https://helpdesk-agent-6wri.onrender.com/"},
+        {"label": "Code", "url": "https://github.com/Aashan47/helpdesk-agent"}
+      ],
+      "image": "assets/img/helpdesk-agent.jpg",
+      "alt": "helpdesk-agent console: a ticket resolved from a cited help-centre article"
+    },
+    {
+      "title": "Visual Research Assistant: Multimodal Agentic RAG",
+      "tagline": "Local-first agentic RAG over PDFs (text + tables + figures) with hallucination-aware retry.",
+      "problem": "Most 'chatbot over PDF' tools fall apart on real research papers: they ignore figures and tables, hallucinate citations, and lock you into cloud APIs. I wanted a multimodal agent that reasons over text, tables, and figures, runs locally on consumer GPUs, and tells you when it's wrong.",
+      "approach": {
+        "data": "Multi-page PDFs partitioned into text blocks, tables (preserved as HTML), and rasterized figures. Optional user-uploaded images for cross-modal queries.",
+        "models": "LangGraph state machine over five nodes: Router → Retriever → Generator → Critic → Finalize. Generator selects llava:7b for vision queries, llama3.2:1b for text. Critic is a separate model family with Pydantic-structured output for hallucination detection. ChromaDB + nomic-embed-text for retrieval.",
+        "why": "Cross-family critic so the judge isn't biased toward the generator's mistakes. Multi-vector retrieval (embed summaries, return originals) so semantic search doesn't truncate context. Retry only on hallucination; everything else surfaces on the first pass to keep latency honest."
+      },
+      "results": [
+        "10-page PDF ingestion: 3–5 s",
+        "Text queries: 20–30 s",
+        "Image / cross-modal queries: 60–120 s (vision-bound)",
+        "Runs on 6 GB VRAM, ~7 GB total model disk"
+      ],
+      "deployment": "Streamlit UI with citation badges and an agent-trace timeline. Docker Compose bundles Ollama + the app. SQLite checkpointer for resumable runs; structured JSON logs.",
+      "tags": ["LangGraph", "Ollama", "Multimodal", "RAG", "ChromaDB", "Streamlit"],
+      "links": [
+        {"label": "Code", "url": "https://github.com/Aashan47/Visual-Research-Assistant-Multimodal-Agentic-RAG"},
+        {"label": "Demo", "url": "https://www.youtube.com/watch?v=VEYBZmQNwGY"}
+      ],
+      "image": "assets/img/RAG.png",
+      "alt": "Visual Research Assistant agentic RAG interface"
+    },
     {
       "title": "Beijing Air-Quality Forecasting: MLOps Pipeline",
       "tagline": "Drift-aware PM2.5 forecaster on a 9-point Beijing grid. Airflow + SageMaker + Evidently, end-to-end.",
@@ -71,30 +123,6 @@
       "links": [
         {"label": "Code", "url": "https://github.com/Aashan47/Production-Learning-to-Rank-LTR-System-Hotel-Search-Ranking"}
       ]
-    },
-    {
-      "title": "Visual Research Assistant: Multimodal Agentic RAG",
-      "tagline": "Local-first agentic RAG over PDFs (text + tables + figures) with hallucination-aware retry.",
-      "problem": "Most 'chatbot over PDF' tools fall apart on real research papers: they ignore figures and tables, hallucinate citations, and lock you into cloud APIs. I wanted a multimodal agent that reasons over text, tables, and figures, runs locally on consumer GPUs, and tells you when it's wrong.",
-      "approach": {
-        "data": "Multi-page PDFs partitioned into text blocks, tables (preserved as HTML), and rasterized figures. Optional user-uploaded images for cross-modal queries.",
-        "models": "LangGraph state machine over five nodes: Router → Retriever → Generator → Critic → Finalize. Generator selects llava:7b for vision queries, llama3.2:1b for text. Critic is a separate model family with Pydantic-structured output for hallucination detection. ChromaDB + nomic-embed-text for retrieval.",
-        "why": "Cross-family critic so the judge isn't biased toward the generator's mistakes. Multi-vector retrieval (embed summaries, return originals) so semantic search doesn't truncate context. Retry only on hallucination; everything else surfaces on the first pass to keep latency honest."
-      },
-      "results": [
-        "10-page PDF ingestion: 3–5 s",
-        "Text queries: 20–30 s",
-        "Image / cross-modal queries: 60–120 s (vision-bound)",
-        "Runs on 6 GB VRAM, ~7 GB total model disk"
-      ],
-      "deployment": "Streamlit UI with citation badges and an agent-trace timeline. Docker Compose bundles Ollama + the app. SQLite checkpointer for resumable runs; structured JSON logs.",
-      "tags": ["LangGraph", "Ollama", "Multimodal", "RAG", "ChromaDB", "Streamlit"],
-      "links": [
-        {"label": "Code", "url": "https://github.com/Aashan47/Visual-Research-Assistant-Multimodal-Agentic-RAG"},
-        {"label": "Demo", "url": "https://www.youtube.com/watch?v=VEYBZmQNwGY"}
-      ],
-      "image": "assets/img/RAG.png",
-      "alt": "Visual Research Assistant agentic RAG interface"
     },
     {
       "title": "AlphaEarth Climate Monitoring",
@@ -156,10 +184,10 @@
         "+23% budget efficiency vs baseline approaches",
         "Sub-second inference latency for real-time scoring"
       ],
-      "deployment": "Research code + paper preprint.",
+      "deployment": "Research code, archived on Zenodo.",
       "tags": ["Conformal prediction", "Streaming", "Python"],
       "links": [
-        {"label": "Paper", "url": "https://zenodo.org/records/17170373"},
+        {"label": "Code archive", "url": "https://zenodo.org/records/17170373"},
         {"label": "Code", "url": "https://github.com/Aashan47/Budget-Aware-Fraud-Detection-with-Label-Delay"}
       ],
       "image": "assets/img/Fraud-Thumbnail.jpg",
@@ -194,10 +222,17 @@
   ],
   "publications": [
     {
+      "title": "How Fine Can Your Groups Get? The Breakdown of Plug-in Worst-Group Accuracy",
+      "year": 2026,
+      "summary": "Worst-group accuracy is the standard criterion for certifying group robustness, and it is almost always estimated by the plug-in minimum of per-group accuracies. That estimator's error is model-dependent: it vanishes when one group is clearly worst and is largest when group accuracies are near-tied. The bias therefore does not cancel when two models are compared, so a ranking can invert on the estimator alone.",
+      "status": "Under review, AISTATS 2027",
+      "links": []
+    },
+    {
       "title": "When Does a Frozen Time-Series Foundation Model's Uncertainty Fail, and What Actually Fixes It?",
       "year": 2026,
-      "summary": "A frozen forecaster's own prediction intervals fall furthest short where the series has drifted most, and the failure tracks regime shift rather than forecast horizon. Three static post-hoc conformal variants do not repair that conditional gap; running conformal online narrows it without closing it. The natural rolling-origin implementation leaks its own future into calibration and overstates the recovery.",
-      "status": "Under review",
+      "summary": "The natural rolling-origin implementation of this evaluation leaks its own future into calibration and overstates the apparent recovery, so every result is reported lagging feedback by the full horizon.",
+      "status": "Preprint; manuscript under revision",
       "links": [
         {"label": "Code", "url": "https://github.com/Aashan47/tsfm-uncertainty"}
       ]
@@ -212,9 +247,21 @@
       "to": "Present",
       "bullets": [
         "Architected the Large Temperature Model (LTM), a Transformer + Diffusion system forecasting street-level (2 m) air temperature at 10 m spatial resolution across the contiguous United States (CONUS).",
-        "Led an NVIDIA CorrDiff collaboration on diffusion-based downscaling: a 255× spatial amplification (16× finer per axis) taking a 25 km grid to roughly 1.5 km over the San Jose region.",
-        "Building FortyGuard's geospatial AI agents: working, LLM-driven agents that turn natural-language questions into geospatial climate and heat-exposure analysis.",
-        "Improved real-time air-temperature prediction accuracy by 21% and built scalable scientific ML pipelines from data ingestion through training, deployment, and inference."
+        "Led technical collaborations with NVIDIA, Nebius and Ecopia. With NVIDIA, built a CorrDiff diffusion-based downscaling model: a 255× spatial amplification (16× finer per axis) taking a 25 km grid to roughly 1.5 km over the San Jose region.",
+        "Building geospatial multi-agent systems for the FortyGuard dashboard: LLM-driven agents that turn natural-language questions into climate and heat-exposure analysis.",
+        "Raised real-time air-temperature prediction accuracy by 21% and cut prediction variance by 18% on noisy real-world data, with scientific ML pipelines from data ingestion through training, deployment and inference."
+      ]
+    },
+    {
+      "role": "Independent Researcher",
+      "place": "Calibrated uncertainty under distribution shift",
+      "location": "Remote",
+      "from": "2025",
+      "to": "Present",
+      "bullets": [
+        "Designed and ran the experiments behind my research end to end: problem selection, literature gap verification, data acquisition, implementation, evaluation and writing.",
+        "Built a model-agnostic, unit-tested conformal prediction library (split-conformal, CQR, Mondrian, adaptive conformal inference) reused across every study.",
+        "Ran an adversarial audit of my own results and found that a masking flag I believed was off had never reached the frozen encoder, so two calls on the same input disagreed. I stopped the affected work and did not publish on it. Reproducing a frozen encoder's output before trusting it is now a fixed step in how I work."
       ]
     },
     {
@@ -241,7 +288,8 @@
     }
   ],
   "skills": {
-    "GenAI & LLMs": ["LLM applications", "LLM fine-tuning", "Agentic workflows", "Multimodal AI", "RAG", "Embeddings", "CLIP", "LLM evaluation", "Prompt & retrieval optimization"],
+    "Agent systems": ["Tool-use agents", "Multi-agent systems", "Agent loops & stop conditions", "Evals (LLM judges, regression suites, CI gates)", "Calibration & conformal prediction", "Guardrails", "Human-in-the-loop escalation", "Observability (traces, alerting)", "Context engineering"],
+    "GenAI & LLMs": ["LLM applications", "Claude, Gemini & GPT APIs", "LangGraph", "RAG", "Multimodal AI", "Embeddings", "CLIP", "LLM fine-tuning", "Prompt & retrieval optimization"],
     "ML & Modeling": ["Python", "PyTorch", "TensorFlow", "XGBoost", "LightGBM", "LambdaMART", "Forecasting", "Ranking", "Recommendation", "Feature engineering"],
     "Data & Infrastructure": ["SQL", "Postgres", "BigQuery", "Airflow", "Cloud Composer", "Data pipelines", "Model monitoring (Evidently)", "Data quality"],
     "Cloud & Deployment": ["AWS", "GCP", "SageMaker", "Docker", "Kubernetes", "FastAPI", "CI/CD", "Linux"],
@@ -252,6 +300,6 @@
     "degree": "BS Computer Science: Gold Medalist and Rector's List of Honors (7th semester); graduated 57/285 (top 20%)",
     "location": "Islamabad"
   },
-  "certifications_summary": "Stanford ML Specialization · IBM Data Science · Google Data Analytics · AWS Academy · Microsoft Azure Fundamentals",
+  "certifications_summary": "Machine Learning Specialization (Stanford Online & DeepLearning.AI) · IBM Data Science · Google Data Analytics · AWS Academy · Microsoft Azure Fundamentals",
   "certifications_link": "https://drive.google.com/drive/folders/1l3_D9sudvOBeAlmY4pgb79kmQ7D0Q7be?usp=drive_link"
 }
