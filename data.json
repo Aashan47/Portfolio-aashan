@@ -33,6 +33,52 @@
   ],
   "projects": [
     {
+      "title": "holdline: an Eval and Regression Gate for AI Agents",
+      "tagline": "Fails the pull request when a change makes an agent measurably worse, and checks the LLM judge before it is allowed to grade.",
+      "problem": "Agent changes ship on vibes: a prompt looks better on five examples, merges, and quietly breaks cases nobody re-ran. Checking only the final answer misses an agent that got there the wrong way, one run per case hides flaky behaviour, and the LLM judge doing the grading is rarely measured at all.",
+      "approach": {
+        "data": "Test cases as plain JSONL, or result files exported from any eval tool. Dogfooded on helpdesk-agent's 68 labelled support tickets, three runs each.",
+        "models": "Records every tool and model call, checks the path as well as the answer, runs each case several times and reports pass^k, compares before and after on the same cases with an exact McNemar test and a bootstrap interval, and measures an LLM judge against human labels: kappa, false-pass rate, and bias that flips between kinds of case.",
+        "why": "A merge decision is a yes or no, so the gate gives one with the reasons and the statistics behind it. Small test suites rarely prove a regression on their own, so must-pass cases and budgets sit next to the test."
+      },
+      "results": [
+        "On helpdesk-agent (68 tickets x 3 runs): 95.6% pass rate (95% CI 89.7 to 100), and every uncovered ticket escalated in all 66 runs",
+        "Caught a right answer citing the wrong article, and a correct answer that the grader marked wrong",
+        "Gated a cheaper setting: 0 cases broke, with 62% fewer model calls",
+        "Judge check runs in the browser, and its numbers match the Python package (tested)"
+      ],
+      "deployment": "Open source (MIT) and on PyPI as holdline, with zero runtime dependencies. Command line, GitHub Action, single-file HTML reports and a browser judge check. 51 tests and CI on three Python versions.",
+      "tags": [
+        "AI agents",
+        "Evals",
+        "LLM-as-judge",
+        "Statistics",
+        "CI/CD",
+        "Open source",
+        "Python"
+      ],
+      "links": [
+        {
+          "label": "Website",
+          "url": "https://www.aashanjaved.com/holdline/"
+        },
+        {
+          "label": "Judge check",
+          "url": "https://www.aashanjaved.com/holdline/judge/"
+        },
+        {
+          "label": "Code",
+          "url": "https://github.com/Aashan47/holdline"
+        },
+        {
+          "label": "PyPI",
+          "url": "https://pypi.org/project/holdline/"
+        }
+      ],
+      "image": "assets/img/holdline.jpg",
+      "alt": "A holdline report: the gate passed, pass rate with its interval, a case map of 68 cases and the cases that need attention"
+    },
+    {
       "title": "helpdesk-agent: a Support Agent That Knows When to Escalate",
       "tagline": "Replies only from the help centre, cites the article, and hands the ticket to a human with a note when it can't.",
       "problem": "A chatbot with the help centre pasted in answers every ticket. On the tickets the help centre doesn't cover, it confidently invents policy: discounts, refunds, integrations that don't exist. In support, one invented policy costs more than ten escalations.",
@@ -48,10 +94,23 @@
         "Selective error 3.6% against a 10% target, on 41 held-out tickets"
       ],
       "deployment": "Zero-dependency Python service on Render. The console shows a live ticket inbox with the agent's steps streaming as it works, a human queue for escalations, and an editable help centre that re-indexes on save. Rate limits, input guards, 62 tests and CI on every push.",
-      "tags": ["AI agents", "Evals", "Conformal prediction", "Guardrails", "Human-in-the-loop", "Python"],
+      "tags": [
+        "AI agents",
+        "Evals",
+        "Conformal prediction",
+        "Guardrails",
+        "Human-in-the-loop",
+        "Python"
+      ],
       "links": [
-        {"label": "Live demo", "url": "https://helpdesk-agent-6wri.onrender.com/"},
-        {"label": "Code", "url": "https://github.com/Aashan47/helpdesk-agent"}
+        {
+          "label": "Live demo",
+          "url": "https://helpdesk-agent-6wri.onrender.com/"
+        },
+        {
+          "label": "Code",
+          "url": "https://github.com/Aashan47/helpdesk-agent"
+        }
       ],
       "image": "assets/img/helpdesk-agent.jpg",
       "alt": "helpdesk-agent console: a ticket resolved from a cited help-centre article"
@@ -72,10 +131,23 @@
         "Runs on 6 GB VRAM, ~7 GB total model disk"
       ],
       "deployment": "Streamlit UI with citation badges and an agent-trace timeline. Docker Compose bundles Ollama + the app. SQLite checkpointer for resumable runs; structured JSON logs.",
-      "tags": ["LangGraph", "Ollama", "Multimodal", "RAG", "ChromaDB", "Streamlit"],
+      "tags": [
+        "LangGraph",
+        "Ollama",
+        "Multimodal",
+        "RAG",
+        "ChromaDB",
+        "Streamlit"
+      ],
       "links": [
-        {"label": "Code", "url": "https://github.com/Aashan47/Visual-Research-Assistant-Multimodal-Agentic-RAG"},
-        {"label": "Demo", "url": "https://www.youtube.com/watch?v=VEYBZmQNwGY"}
+        {
+          "label": "Code",
+          "url": "https://github.com/Aashan47/Visual-Research-Assistant-Multimodal-Agentic-RAG"
+        },
+        {
+          "label": "Demo",
+          "url": "https://www.youtube.com/watch?v=VEYBZmQNwGY"
+        }
       ],
       "image": "assets/img/RAG.png",
       "alt": "Visual Research Assistant agentic RAG interface"
@@ -95,10 +167,24 @@
         "End-to-end pipeline runs every 6 hours autonomously"
       ],
       "deployment": "Airflow 2.10 orchestrates ingest → features → drift → conditional retrain. SageMaker training + Model Registry with RMSE-gated approval. FastAPI serves point, grid, and multi-day endpoints. Docker Compose on EC2 with Nginx + Postgres. Leaflet + Chart.js dashboard auto-refreshes every 5 min.",
-      "tags": ["Airflow", "SageMaker", "Evidently", "XGBoost", "FastAPI", "Docker", "AWS"],
+      "tags": [
+        "Airflow",
+        "SageMaker",
+        "Evidently",
+        "XGBoost",
+        "FastAPI",
+        "Docker",
+        "AWS"
+      ],
       "links": [
-        {"label": "Code", "url": "https://github.com/Aashan47/Beijing-Air-Quality-Forecasting-MLOps-Pipeline"},
-        {"label": "Demo", "url": "https://www.youtube.com/watch?v=X04EYaTg3Os"}
+        {
+          "label": "Code",
+          "url": "https://github.com/Aashan47/Beijing-Air-Quality-Forecasting-MLOps-Pipeline"
+        },
+        {
+          "label": "Demo",
+          "url": "https://www.youtube.com/watch?v=X04EYaTg3Os"
+        }
       ],
       "image": "assets/img/air-quality.png",
       "alt": "Beijing air-quality forecasting dashboard"
@@ -119,9 +205,18 @@
         "Wins on 30.9% of 59,903 test queries; ties on 37.4% (booked hotel already #1)"
       ],
       "deployment": "Reproducible offline training and bias-corrected evaluation pipeline.",
-      "tags": ["LightGBM", "LambdaMART", "Ranking", "IPS", "Python"],
+      "tags": [
+        "LightGBM",
+        "LambdaMART",
+        "Ranking",
+        "IPS",
+        "Python"
+      ],
       "links": [
-        {"label": "Code", "url": "https://github.com/Aashan47/Production-Learning-to-Rank-LTR-System-Hotel-Search-Ranking"}
+        {
+          "label": "Code",
+          "url": "https://github.com/Aashan47/Production-Learning-to-Rank-LTR-System-Hotel-Search-Ranking"
+        }
       ]
     },
     {
@@ -138,11 +233,25 @@
         "Anomaly detection accuracy +17% vs baseline"
       ],
       "deployment": "Earth Engine pipelines + Python; reproducible end-to-end with paper and code.",
-      "tags": ["Python", "Earth Engine", "Foundation models", "Geospatial"],
+      "tags": [
+        "Python",
+        "Earth Engine",
+        "Foundation models",
+        "Geospatial"
+      ],
       "links": [
-        {"label": "Code", "url": "https://github.com/Aashan47/Alpha-Earth---Climate-Monitoring-System"},
-        {"label": "Paper", "url": "https://zenodo.org/records/17171331"},
-        {"label": "Demo", "url": "https://www.youtube.com/watch?v=Glg3FgF3DnM"}
+        {
+          "label": "Code",
+          "url": "https://github.com/Aashan47/Alpha-Earth---Climate-Monitoring-System"
+        },
+        {
+          "label": "Paper",
+          "url": "https://zenodo.org/records/17171331"
+        },
+        {
+          "label": "Demo",
+          "url": "https://www.youtube.com/watch?v=Glg3FgF3DnM"
+        }
       ],
       "image": "assets/img/Thumbnail-Alpha Earth.png",
       "alt": "AlphaEarth climate monitoring system"
@@ -161,37 +270,28 @@
         "Automated reports + interactive map UI"
       ],
       "deployment": "React + Material-UI frontend, Flask API. Live demo videos.",
-      "tags": ["React", "Flask", "NASA APIs", "OpenStreetMap"],
+      "tags": [
+        "React",
+        "Flask",
+        "NASA APIs",
+        "OpenStreetMap"
+      ],
       "links": [
-        {"label": "Code", "url": "https://github.com/Aashan47/Urban-Data-Center-Site-and-Risk-Assessment"},
-        {"label": "Quick demo", "url": "https://youtu.be/Hd5zVOhxH78"},
-        {"label": "Full demo", "url": "https://youtu.be/GxkEzKhGeb0"}
+        {
+          "label": "Code",
+          "url": "https://github.com/Aashan47/Urban-Data-Center-Site-and-Risk-Assessment"
+        },
+        {
+          "label": "Quick demo",
+          "url": "https://youtu.be/Hd5zVOhxH78"
+        },
+        {
+          "label": "Full demo",
+          "url": "https://youtu.be/GxkEzKhGeb0"
+        }
       ],
       "image": "assets/img/Thumbnail-Urban-Data-Center.jpg",
       "alt": "Urban data center site assessment platform"
-    },
-    {
-      "title": "Budget-Aware Fraud Detection",
-      "tagline": "Stable Top-K alerts under label delay using split-conformal guarantees: 94% precision held at 2-week label lag.",
-      "problem": "In production fraud, labels arrive days late and drift constantly. Most academic models assume labels exist now, so their alert lists thrash, and analysts lose trust.",
-      "approach": {
-        "data": "Streaming fraud benchmarks with simulated label delay (14-day default) and concept drift; investigation budget of 500 transactions per period.",
-        "models": "Calibrated Top-K decisioning with split-conformal coverage guarantees on top of an underlying classifier; 5-fold cross-validation.",
-        "why": "Conformal because it gives finite-sample guarantees without assuming the underlying classifier is calibrated, useful when the score distribution drifts."
-      },
-      "results": [
-        "94% precision maintained under 2-week label delays",
-        "+23% budget efficiency vs baseline approaches",
-        "Sub-second inference latency for real-time scoring"
-      ],
-      "deployment": "Research code, archived on Zenodo.",
-      "tags": ["Conformal prediction", "Streaming", "Python"],
-      "links": [
-        {"label": "Code archive", "url": "https://zenodo.org/records/17170373"},
-        {"label": "Code", "url": "https://github.com/Aashan47/Budget-Aware-Fraud-Detection-with-Label-Delay"}
-      ],
-      "image": "assets/img/Fraud-Thumbnail.jpg",
-      "alt": "Fraud detection under label delay"
     },
     {
       "title": "Revisitation-Aware Video Segmentation",
@@ -209,12 +309,28 @@
         "Static overcount −50%"
       ],
       "deployment": "Research code + paper preprint.",
-      "tags": ["PyTorch", "PSPNet", "Computer vision"],
+      "tags": [
+        "PyTorch",
+        "PSPNet",
+        "Computer vision"
+      ],
       "links": [
-        {"label": "Code", "url": "https://github.com/Aashan47/Video-Segmentation/tree/main"},
-        {"label": "Paper", "url": "https://doi.org/10.5281/zenodo.17218433"},
-        {"label": "Segmentation demo", "url": "https://www.youtube.com/watch?v=HwiyFk_XMjw"},
-        {"label": "Scene-detection demo", "url": "https://www.youtube.com/shorts/m0hQ2HnS5pw"}
+        {
+          "label": "Code",
+          "url": "https://github.com/Aashan47/Video-Segmentation/tree/main"
+        },
+        {
+          "label": "Paper",
+          "url": "https://doi.org/10.5281/zenodo.17218433"
+        },
+        {
+          "label": "Segmentation demo",
+          "url": "https://www.youtube.com/watch?v=HwiyFk_XMjw"
+        },
+        {
+          "label": "Scene-detection demo",
+          "url": "https://www.youtube.com/shorts/m0hQ2HnS5pw"
+        }
       ],
       "image": "assets/img/video-seg.png",
       "alt": "Video segmentation with revisit detection"
@@ -234,7 +350,10 @@
       "summary": "The natural rolling-origin implementation of this evaluation leaks its own future into calibration and overstates the apparent recovery, so every result is reported lagging feedback by the full horizon.",
       "status": "Preprint; manuscript under revision",
       "links": [
-        {"label": "Code", "url": "https://github.com/Aashan47/tsfm-uncertainty"}
+        {
+          "label": "Code",
+          "url": "https://github.com/Aashan47/tsfm-uncertainty"
+        }
       ]
     }
   ],
@@ -288,12 +407,67 @@
     }
   ],
   "skills": {
-    "Agent systems": ["Tool-use agents", "Multi-agent systems", "Agent loops & stop conditions", "Evals (LLM judges, regression suites, CI gates)", "Calibration & conformal prediction", "Guardrails", "Human-in-the-loop escalation", "Observability (traces, alerting)", "Context engineering"],
-    "GenAI & LLMs": ["LLM applications", "Claude, Gemini & GPT APIs", "LangGraph", "RAG", "Multimodal AI", "Embeddings", "CLIP", "LLM fine-tuning", "Prompt & retrieval optimization"],
-    "ML & Modeling": ["Python", "PyTorch", "TensorFlow", "XGBoost", "LightGBM", "LambdaMART", "Forecasting", "Ranking", "Recommendation", "Feature engineering"],
-    "Data & Infrastructure": ["SQL", "Postgres", "BigQuery", "Airflow", "Cloud Composer", "Data pipelines", "Model monitoring (Evidently)", "Data quality"],
-    "Cloud & Deployment": ["AWS", "GCP", "SageMaker", "Docker", "Kubernetes", "FastAPI", "CI/CD", "Linux"],
-    "Domain": ["Climate informatics", "Geospatial (Earth Engine, Rasterio, GDAL, xarray)", "Computer vision", "NLP", "Time-series"]
+    "Agent systems": [
+      "Tool-use agents",
+      "Multi-agent systems",
+      "Agent loops & stop conditions",
+      "Evals (LLM judges, regression suites, CI gates)",
+      "Calibration & conformal prediction",
+      "Guardrails",
+      "Human-in-the-loop escalation",
+      "Observability (traces, alerting)",
+      "Context engineering"
+    ],
+    "GenAI & LLMs": [
+      "LLM applications",
+      "Claude, Gemini & GPT APIs",
+      "LangGraph",
+      "RAG",
+      "Multimodal AI",
+      "Embeddings",
+      "CLIP",
+      "LLM fine-tuning",
+      "Prompt & retrieval optimization"
+    ],
+    "ML & Modeling": [
+      "Python",
+      "PyTorch",
+      "TensorFlow",
+      "XGBoost",
+      "LightGBM",
+      "LambdaMART",
+      "Forecasting",
+      "Ranking",
+      "Recommendation",
+      "Feature engineering"
+    ],
+    "Data & Infrastructure": [
+      "SQL",
+      "Postgres",
+      "BigQuery",
+      "Airflow",
+      "Cloud Composer",
+      "Data pipelines",
+      "Model monitoring (Evidently)",
+      "Data quality"
+    ],
+    "Cloud & Deployment": [
+      "AWS",
+      "GCP",
+      "SageMaker",
+      "Docker",
+      "Kubernetes",
+      "FastAPI",
+      "CI/CD",
+      "Linux"
+    ],
+    "Domain": [
+      "Climate informatics",
+      "Geospatial (Earth Engine, Rasterio, GDAL, xarray)",
+      "Computer vision",
+      "NLP",
+      "Time-series"
+    ]
   },
   "education": {
     "school": "National University of Computer and Emerging Sciences (FAST)",
